@@ -9,7 +9,7 @@ function About() {
     <div id="about" className="flex flex-col">
       <div className="flex w-full justify-between">
         <div className={styles["rounded-box"]}>
-          <div className="flex items-center h-max gap-4">
+          <div className="flex items-center w-auto h-max gap-4">
             <h1 className="text-[60px] font-bold mt-5">What is</h1>
             <Image src="/logo-full.svg" alt="Notin" width={180} height={180} />
             <h1 className="text-[60px] font-bold mt-5">?</h1>
