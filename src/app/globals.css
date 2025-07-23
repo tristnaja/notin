@@ -5,6 +5,7 @@
   --white: #f9fcff;
   --grey: #141414;
   --blue: #57aef5;
+  --blue-opacity-40: rgba(87, 174, 245, 0.4);
   --red: #f55757;
   --red-alert: #ee3939;
 }
@@ -19,6 +20,7 @@
   --color-white: var(--white);
   --color-grey: var(--grey);
   --color-blue: var(--blue);
+  --color-blue-opacity-40: var(--blue-opacity-40);
   --color-red: var(--red);
   --color-red-alert: var(--red-alert);
 }
