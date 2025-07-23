@@ -3,7 +3,10 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function Hero() {
   return (
-    <div className="max-h-screen flex flex-col justify-center items-center">
+    <div
+      id="home"
+      className="max-h-screen flex flex-col justify-center items-center"
+    >
       <div
         className="w-max bg-black flex gap-4 justify-center items-center border border-white px-2 py-2 pr-4 rounded-full"
         style={{

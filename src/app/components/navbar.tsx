@@ -1,16 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 
-function navbar() {
+function Navbar() {
   return (
     <>
       <Image src="/logo-full.svg" alt="Logo" width={140} height={140} />
       <div>
         <ul className="flex gap-10 font-semibold">
           <li>
-            <a href="/">Home</a>
+            <Link href="#home">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link href="#about">About</Link>
           </li>
           <li>
             <a href="/features">Features</a>
@@ -27,4 +28,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default Navbar;
