@@ -2,7 +2,10 @@ import Image from "next/image";
 
 function Features() {
   return (
-    <div className="flex flex-col justify-center items-center w-full relative max-h-[1024px] p-0 m-0">
+    <section
+      id="features"
+      className="flex flex-col justify-center items-center w-full relative max-h-[1024px] p-0 m-0"
+    >
       <Image
         src="/main-feature-decoration.svg"
         alt="Features Illustration"
@@ -52,7 +55,7 @@ function Features() {
         height={1000}
         className="self-start"
       />
-    </div>
+    </section>
   );
 }
 export default Features;

@@ -5,8 +5,26 @@ import styles from "../styles/BoxStyle.module.css";
 import { useEffect, useRef, useState } from "react";
 
 function About() {
+  const dotLottieRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && dotLottieRef.current) {
+          dotLottieRef.current.play();
+        }
+      },
+      { threshold: 1 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
+  }, []);
+
   return (
-    <div id="about" className="flex flex-col">
+    <section id="about" className="flex flex-col">
       <div className="flex w-full justify-between">
         <div className={styles["rounded-box"]}>
           <div className="flex items-center w-auto h-max gap-4">
@@ -34,11 +52,14 @@ function About() {
         </div>
       </div>
       <div className="flex w-full justify-between mt-[10dvh]">
-        <div className="w-130 overflow-hidden relative">
+        <div ref={containerRef} className="w-130 overflow-hidden relative">
           <DotLottieReact
             src="https://lottie.host/4c2c7003-1d50-4cb1-997a-f2377b9e0c3b/JOFjmUWIpr.lottie"
-            loop
-            autoplay
+            loop={false}
+            autoplay={false}
+            dotLottieRefCallback={(instance) => {
+              dotLottieRef.current = instance;
+            }}
             className="w-full h-full"
           />
         </div>
@@ -54,7 +75,7 @@ function About() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 export default About;

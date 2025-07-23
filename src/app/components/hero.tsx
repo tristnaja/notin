@@ -3,7 +3,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function Hero() {
   return (
-    <div
+    <section
       id="home"
       className="max-h-screen flex flex-col justify-center items-center"
     >
@@ -49,7 +49,7 @@ function Hero() {
           <p className="mt-1 font-bold text-[23px]">See More</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 export default Hero;

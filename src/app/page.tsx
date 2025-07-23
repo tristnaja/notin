@@ -2,6 +2,8 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Features from "./components/Features";
+import Developers from "./components/Developers";
+import Footer from "./components/Footer";
 
 export default function LandingPage() {
   return (
@@ -18,8 +20,11 @@ export default function LandingPage() {
         <Hero />
         <About />
         <Features />
+        <Developers />
       </main>
-      <footer className=""></footer>
+      <footer className="mt-[20dvh]">
+        <Footer />
+      </footer>
     </div>
   );
 }

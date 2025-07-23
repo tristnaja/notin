@@ -14,10 +14,10 @@ function Navbar() {
             <Link href="#about">About</Link>
           </li>
           <li>
-            <a href="/features">Features</a>
+            <Link href="#features">Features</Link>
           </li>
           <li>
-            <a href="/developer">Developers</a>
+            <Link href="#developers">Developers</Link>
           </li>
         </ul>
       </div>
