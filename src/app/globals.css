@@ -33,4 +33,5 @@
 body {
   background: var(--black);
   color: var(--white);
+  font-family: var(--font-khula), sans-serif;
 }
