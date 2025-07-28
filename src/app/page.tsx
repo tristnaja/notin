@@ -7,16 +7,16 @@ import Footer from "./components/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="max-w-[1600px] mx-auto">
+    <div className="max-w-[1600px] mx-auto overflow-clip">
       <nav
-        className="flex justify-between items-center py-6 px-8 mb-[5dvh] sticky top-0 z-50 bg-black filter"
+        className="flex justify-between items-center mb-[5dvh] sticky top-0 z-50 bg-black filter"
         style={{
           filter: "drop-shadow(0px 5px 10px rgba(0, 3, 6, 0.8))",
         }}
       >
         <Navbar />
       </nav>
-      <main className="flex flex-col gap-[20dvh]">
+      <main className="flex flex-col gap-[20dvh] lg:gap-[20dvh]">
         <Hero />
         <About />
         <Features />

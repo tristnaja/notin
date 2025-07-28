@@ -148,3 +148,25 @@ body {
   color: white;
   white-space: nowrap;
 }
+
+@media (width <= 560px) {
+  .scroller {
+    margin-bottom: 10px;
+  }
+  .scroller__inner {
+    gap: 10px;
+  }
+
+  .tag-list li {
+    font-size: 15px;
+    padding: 0.5rem 2rem;
+  }
+}
+
+@media (width > 1440px) {
+  .tag-list li {
+    font-size: 40px;
+    padding: 2rem 5rem;
+    border-radius: 0.8rem;
+  }
+}

@@ -1,71 +1,80 @@
-"use client";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Image from "next/image";
 import styles from "../styles/BoxStyle.module.css";
-import { useEffect, useRef, useState } from "react";
+import LottiePlayer from "./LottiePlayer";
 
 function About() {
-  const dotLottieRef = useRef<any>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && dotLottieRef.current) {
-          dotLottieRef.current.play();
-        }
-      },
-      { threshold: 1 }
-    );
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
-  }, []);
-
   return (
-    <section id="about" className="flex flex-col">
-      <div className="flex w-full justify-between">
-        <div className={styles["rounded-box"]}>
-          <div className="flex items-center w-auto h-max gap-4">
-            <h1 className="text-[60px] font-bold mt-5">What is</h1>
-            <Image src="/logo-full.svg" alt="Notin" width={180} height={180} />
-            <h1 className="text-[60px] font-bold mt-5">?</h1>
+    <section
+      id="about"
+      className="flex flex-col scroll-mt-26 select-none lg:select-auto"
+    >
+      <div className="flex flex-col-reverse lg:flex-row w-full justify-between gap-6 lg:gap-0">
+        <div className={`w-full lg:w-auto ${styles["rounded-box"]}`}>
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex items-center w-max h-max gap-4">
+              <h1
+                className="font-bold mt-5"
+                style={{ fontSize: "clamp(30px, 5vw, 60px)" }}
+              >
+                What is
+              </h1>
+              <Image
+                src="/logo-full.svg"
+                alt="Notin"
+                width={170}
+                height={170}
+                className="w-37 h-auto xl:w-max"
+              />
+              <h1
+                className="font-bold mt-5"
+                style={{ fontSize: "clamp(30px, 5vw, 60px)" }}
+              >
+                ?
+              </h1>
+            </div>
+            <p
+              className="font-light opacity-50 text-center lg:text-justify w-85 md:w-130 lg:w-95 xl:w-120"
+              style={{ fontSize: "clamp(12px, 1vw, 1rem)" }}
+            >
+              NOTIN is your intelligent note-making companion — an AI-powered
+              tool that transforms YouTube lectures, PDFs, and Google Docs into
+              clear, structured, and easy-to-read markdown notes. Designed for
+              students, educators, and lifelong learners, NOTIN helps you focus
+              on what matters: understanding and learning — not manually writing
+              notes. Unlike many existing tools, NOTIN is built to be completely
+              free. No paywalls, no subscriptions — just pure, accessible
+              knowledge.
+            </p>
           </div>
-          <p className="text-[100%] font-light opacity-50 text-justify w-120">
-            NOTIN is your intelligent note-making companion — an AI-powered tool
-            that transforms YouTube lectures, PDFs, and Google Docs into clear,
-            structured, and easy-to-read markdown notes. Designed for students,
-            educators, and lifelong learners, NOTIN helps you focus on what
-            matters: understanding and learning — not manually writing notes.
-            Unlike many existing tools, NOTIN is built to be completely free. No
-            paywalls, no subscriptions — just pure, accessible knowledge.
-          </p>
         </div>
-        <div className="w-130 overflow-hidden relative">
-          <DotLottieReact
+        <div className="w-full lg:w-90 xl:w-130 overflow-hidden relative">
+          <LottiePlayer
             src="https://lottie.host/a97d9029-89ba-4748-9a87-cafef0182f0f/0AbzJmTKhX.lottie"
-            loop
-            autoplay
-            className="w-full h-full"
+            mt={0}
           />
         </div>
       </div>
-      <div className="flex w-full justify-between mt-[10dvh]">
-        <div ref={containerRef} className="w-130 overflow-hidden relative">
-          <DotLottieReact
+      <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between mt-[10dvh] w-full">
+        <div className="w-full lg:w-180 xl:w-200 overflow-hidden relative">
+          <LottiePlayer
             src="https://lottie.host/4c2c7003-1d50-4cb1-997a-f2377b9e0c3b/JOFjmUWIpr.lottie"
             loop={false}
             autoplay={false}
-            dotLottieRefCallback={(instance) => {
-              dotLottieRef.current = instance;
-            }}
-            className="w-full h-full"
+            dotLottieRefCallback={true}
+            mt={0}
           />
         </div>
         <div className={`${styles["rounded-box"]} ${styles["right"]}`}>
-          <h1 className="text-[60px] font-bold mt-5">Why choose Us?</h1>
-          <p className="text-[100%] font-light opacity-50 text-justify w-120">
+          <h1
+            className="text-center lg:text-left font-bold mt-0 lg:mt-5"
+            style={{ fontSize: "clamp(30px, 4vw, 60px)" }}
+          >
+            Why choose Us?
+          </h1>
+          <p
+            className="font-light opacity-50 text-center lg:text-justify w-85 md:w-130 lg:w-95 xl:w-120"
+            style={{ fontSize: "clamp(12px, 1vw, 1rem)" }}
+          >
             At NOTIN, we believe that learning should be simple, fast, and free.
             Whether you're studying for an exam, summarizing lectures, or
             organizing reading materials, NOTIN streamlines the process using

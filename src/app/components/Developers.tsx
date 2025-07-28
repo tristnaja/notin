@@ -29,10 +29,12 @@ function Developers() {
   return (
     <section
       id="developers"
-      className="flex flex-col justify-center items-center w-full"
+      className="flex flex-col justify-center items-center w-full scroll-mt-40 select-none lg:select-auto"
     >
       <div className="flex flex-col justify-center items-center mb-[25px]">
-        <h1 className="font-extrabold text-[80px] m-0 p-0">OUR DEVELOPERS</h1>
+        <h1 className="font-extrabold text-[35px] lg:text-[80px] m-0 p-0 select-none lg:select-auto">
+          OUR DEVELOPERS
+        </h1>
         <div className="border-b-5 border-white w-[38dvw]"></div>
       </div>
       <div className="dev-wrapper">

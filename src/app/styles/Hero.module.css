@@ -1,0 +1,5 @@
+@media (width <= 375px) {
+  .p-media {
+    width: 17rem !important;
+  }
+}
