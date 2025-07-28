@@ -7,7 +7,7 @@ function Features() {
       className="flex flex-col justify-center items-center w-full relative max-h-[1024px] p-0 my-50 lg:m-0 scroll-mt-90 lg:-scroll-mt-10 select-none lg:select-auto"
     >
       <Image
-        src="/main-feature-decoration.svg"
+        src="/landing/main-feature-decoration.svg"
         alt="Features Illustration"
         width={1000}
         height={1000}
@@ -55,7 +55,7 @@ function Features() {
         </div>
       </div>
       <Image
-        src="/main-feature-decoration-2.svg"
+        src="/landing/main-feature-decoration-2.svg"
         alt="Features Illustration"
         width={1000}
         height={1000}

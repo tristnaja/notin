@@ -48,16 +48,13 @@ function About() {
           </div>
         </div>
         <div className="w-full lg:w-90 xl:w-130 overflow-hidden relative">
-          <LottiePlayer
-            src="https://lottie.host/a97d9029-89ba-4748-9a87-cafef0182f0f/0AbzJmTKhX.lottie"
-            mt={0}
-          />
+          <LottiePlayer src="/landing/learning-animation.lottie" mt={0} />
         </div>
       </div>
       <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between mt-[10dvh] w-full">
         <div className="w-full lg:w-180 xl:w-200 overflow-hidden relative">
           <LottiePlayer
-            src="https://lottie.host/4c2c7003-1d50-4cb1-997a-f2377b9e0c3b/JOFjmUWIpr.lottie"
+            src="/landing/money-animation.lottie"
             loop={false}
             autoplay={false}
             dotLottieRefCallback={true}

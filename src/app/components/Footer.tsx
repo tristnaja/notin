@@ -55,7 +55,7 @@ function Footer() {
       </div>
       <div className="w-full h-auto">
         <Image
-          src="/notin-footer.svg"
+          src="/landing/notin-footer.svg"
           alt="Footer Decoration"
           width={2000}
           height={2000}
@@ -69,7 +69,7 @@ function Footer() {
         <div className="flex gap-2 w-100 h-auto justify-center items-center">
           <Link href="https://github.com/tristanaja" target="_blank">
             <Image
-              src="/github-icon.svg"
+              src="/landing/github-icon.svg"
               alt="Icon GitHub"
               width={40}
               height={40}
@@ -78,7 +78,7 @@ function Footer() {
           </Link>
           <Link href="mailto:tristan.alhabas@gmail.com" target="_blank">
             <Image
-              src="/email-icon.svg"
+              src="/landing/email-icon.svg"
               alt="Icon Email"
               width={40}
               height={40}

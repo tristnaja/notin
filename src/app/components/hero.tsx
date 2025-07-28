@@ -17,7 +17,7 @@ function Hero() {
       >
         <div className="bg-blue-opacity-40 p-1 md:p-1.5 rounded-full flex justify-center items-center">
           <Image
-            src="/robot.png"
+            src="/landing/robot.png"
             alt="AI"
             width={20}
             height={20}
@@ -37,7 +37,7 @@ function Hero() {
           YOUR AI STUDY ASSISTANT
         </h1>
         <div className="w-100 md:w-200 overflow-hidden relative">
-          <LottiePlayer src="music-animation.lottie" md_mt={20} />
+          <LottiePlayer src="/landing/music-animation.lottie" md_mt={20} />
         </div>
         <div
           className={`${styles["p-media"]} w-90 md:w-170 lg:w-220 xl:w-270 opacity-50 -mt-5 -translate-y-2 md:translate-y-0 md:-mt-20`}
