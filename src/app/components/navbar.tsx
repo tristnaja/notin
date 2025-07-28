@@ -3,11 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -22,20 +20,21 @@ function Navbar() {
         isMenuOpen ? "bg-grey" : "bg-transparent"
       }`}
     >
-      <div
-        className="w-full flex justify-start items-center"
-        onClick={() => router.push("/")}
-        style={{ zIndex: 51 }}
-      >
-        <Image
-          src="/logo-full.svg"
-          alt="Logo"
-          priority
-          width={140}
-          height={140}
-          className="w-25 h-auto"
-        />
-      </div>
+      <Link href="/" className="w-full h-full">
+        <div
+          className="w-full flex justify-start items-center cursor-pointer"
+          style={{ zIndex: 51 }}
+        >
+          <Image
+            src="/logo-full.svg"
+            alt="Logo"
+            priority
+            width={140}
+            height={140}
+            className="w-25 h-auto"
+          />
+        </div>
+      </Link>
       <div className="hidden lg:flex w-full justify-center items-center">
         <ul className="flex gap-10 font-semibold">
           {navLinks.map((link) => (
@@ -49,9 +48,11 @@ function Navbar() {
         </ul>
       </div>
       <div className="hidden lg:flex w-full justify-end items-center">
-        <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 w-max rounded-md cursor-pointer transition-all duration-100">
-          <p className="px-6 py-2 m-0 font-bold">Sign In</p>
-        </div>
+        <Link href="/sign-in">
+          <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 w-max rounded-md cursor-pointer transition-all duration-100">
+            <p className="px-6 py-2 m-0 font-bold">Sign In</p>
+          </div>
+        </Link>
       </div>
 
       {/* Hamburger Menu for Small Screens */}
@@ -101,9 +102,11 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="bg-red-alert rounded-md cursor-pointer self-center w-full hover:bg-red-indicator transition-colors duration-100">
-          <p className="px-6 py-3 m-0 font-bold text-center">SIGN IN</p>
-        </div>
+        <Link href="/sign-in">
+          <div className="bg-red-alert rounded-md cursor-pointer self-center w-full hover:bg-red-indicator transition-colors duration-100">
+            <p className="px-6 py-3 m-0 font-bold text-center">SIGN IN</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
