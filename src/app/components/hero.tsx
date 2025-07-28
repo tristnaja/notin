@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Hero.module.css";
 import LottiePlayer from "./LottiePlayer";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -53,22 +54,26 @@ function Hero() {
         </div>
       </div>
       <div className="hidden md:flex gap-10 mt-12">
-        <div className="bg-red-alert md:w-[200px] md:h-[60px] lg:w-[220px] lg:h-[70px] flex justify-center items-center rounded-full cursor-pointer">
-          <p
-            className="mt-1 font-bold"
-            style={{ fontSize: "clamp(15px, 2vw, 23px)" }}
-          >
-            Dashboard
-          </p>
-        </div>
-        <div className="bg-grey md:w-[200px] md:h-[60px] lg:w-[220px] lg:h-[70px] flex justify-center items-center rounded-full cursor-pointer">
-          <p
-            className="mt-1 font-bold"
-            style={{ fontSize: "clamp(15px, 2vw, 23px)" }}
-          >
-            See More
-          </p>
-        </div>
+        <Link href="/dashboard">
+          <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 transition-all duration-100 md:w-[200px] md:h-[60px] lg:w-[220px] lg:h-[70px] flex justify-center items-center rounded-full cursor-pointer">
+            <p
+              className="mt-1 font-bold"
+              style={{ fontSize: "clamp(15px, 2vw, 23px)" }}
+            >
+              Dashboard
+            </p>
+          </div>
+        </Link>
+        <Link href="#about">
+          <div className="bg-grey hover:bg-[#212121] scale-100 hover:scale-105 transition-all duration-100 md:w-[200px] md:h-[60px] lg:w-[220px] lg:h-[70px] flex justify-center items-center rounded-full cursor-pointer">
+            <p
+              className="mt-1 font-bold"
+              style={{ fontSize: "clamp(15px, 2vw, 23px)" }}
+            >
+              See More
+            </p>
+          </div>
+        </Link>
       </div>
     </section>
   );

@@ -39,14 +39,17 @@ function Navbar() {
       <div className="hidden lg:flex w-full justify-center items-center">
         <ul className="flex gap-10 font-semibold">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li
+              key={link.href}
+              className="scale-100 text-white hover:text-white-opacity-50 hover:scale-105 transition-all duration-100"
+            >
               <Link href={link.href}>{link.label}</Link>
             </li>
           ))}
         </ul>
       </div>
       <div className="hidden lg:flex w-full justify-end items-center">
-        <div className="bg-red-alert w-max rounded-md cursor-pointer">
+        <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 w-max rounded-md cursor-pointer transition-all duration-100">
           <p className="px-6 py-2 m-0 font-bold">Sign In</p>
         </div>
       </div>
@@ -98,7 +101,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="bg-red-alert rounded-md cursor-pointer self-center w-full">
+        <div className="bg-red-alert rounded-md cursor-pointer self-center w-full hover:bg-red-indicator transition-colors duration-100">
           <p className="px-6 py-3 m-0 font-bold text-center">SIGN IN</p>
         </div>
       </div>
