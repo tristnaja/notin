@@ -1,15 +1,18 @@
-import Link from "next/link";
+"use client";
+
+import Sidebar from "./components/Sidebar";
+import { loremIpsum } from "./constants/Lorem";
 
 export default function Home() {
   return (
-    <div className="flex-col gap-6 absolute top-0 left-0 right-0 bottom-0 z-10 flex justify-center items-center font-extrabold text-4xl">
-      <h1>IN PRODUCTION!</h1>
-      <Link
-        href="/"
-        className="bg-blue rounded-full py-2 px-12 text-2xl font-medium pt-3"
-      >
-        Back!
-      </Link>
+    <div className="flex flex-row min-h-screen w-screen bg-black">
+      <aside className="min-w-max w-[15dvw] max-w-max justify-self-start items-center bg-grey p-6 sticky top-0 max-h-[100dvh] transition-all duration-300">
+        <Sidebar />
+      </aside>
+      <main className="p-23 flex-1">
+        <h1 className="font-extrabold text-[48px]">Title</h1>
+        <p className="font-normal text-[24px]">{loremIpsum}</p>
+      </main>
     </div>
   );
 }
