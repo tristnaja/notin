@@ -1,7 +1,6 @@
 "use client";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import type { DotLottie } from "@lottiefiles/dotlottie-react";
-import { useEffect, useRef, type RefCallback } from "react";
+import { useEffect, useRef } from "react";
 
 type Props = {
   src: string;
@@ -27,6 +26,7 @@ function LottiePlayer({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && dotLottieRef.current) {
+          dotLottieRef.current.stop();
           dotLottieRef.current.play();
         }
       },
@@ -36,11 +36,12 @@ function LottiePlayer({
     return () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
-  }, []);
+  }, [src]);
 
   return (
-    <div ref={containerRef} className="w-full h-full">
+    <div ref={containerRef} className="w-full h-full animate-fade-in">
       <DotLottieReact
+        key={src}
         src={src}
         loop={loop}
         autoplay={autoplay}

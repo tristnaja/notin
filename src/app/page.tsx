@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="max-w-[1600px] mx-auto overflow-clip">
+    <div className="max-w-[1600px] mx-auto overflow-clip animate-slide-fade-in">
       <nav
         className="flex justify-between items-center mb-[5dvh] sticky top-0 z-50 bg-black filter"
         style={{

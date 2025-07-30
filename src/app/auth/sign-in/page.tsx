@@ -86,7 +86,7 @@ export default function SignInPage() {
             </Link>
             <p className="text-white text-[12px] font-light flex gap-1 justify-center items-center cursor-not-allowed">
               Don't have an account?
-              <Link href="/auth/sign-up" className="font-bold">
+              <Link href="/auth/sign-up" className="font-bold" replace>
                 Sign Up
               </Link>
             </p>
