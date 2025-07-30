@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Khula } from "next/font/google";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 const khula = Khula({
   weight: ["300", "400", "600", "700", "800"],

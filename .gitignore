@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,36 +10,234 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# Package manager lockfiles (keep package-lock.json, ignore others)
+yarn.lock
+pnpm-lock.yaml
 
-# next.js
+# Testing
+/coverage
+*.lcov
+.nyc_output
+/test-results/
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
+# Next.js
 /.next/
 /out/
+.next
+.swc/
 
-# production
+# Production builds
 /build
+/dist
 
-# misc
+# Static exports
+/out
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Vercel
+.vercel
+.vercel.json
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+.tsbuildinfo
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettierignore
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
 .DS_Store
-*.pem
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
 
-# debug
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# vercel
-.vercel
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Grunt intermediate storage
+.grunt
 
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+firebase-debug.*.log
+
+# Supabase
+.supabase/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+.npm/
+.yarn/cache
+.pnp/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.cert
+
+# Security and sensitive files
+secrets/
+.secrets/
+*.secret
+*.private
+config/local.json
+.env.backup
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+
+# Temporary test files
+test-*.js
+test-*.ts
+*.test.local.*
+
+# AI and Development Documentation (Project Specific)
 CONTEXT.md
 CLAUDE.md
 **.CLAUDE.md
+
+# Project specific ignores
+public/uploads/
+public/temp/
+content/temp/
+
+# Monitoring and analytics
+.sentry/
+
+# Misc
+*.tgz
+*.tar.gz

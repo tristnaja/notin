@@ -182,3 +182,29 @@ body {
     border-radius: 0.8rem;
   }
 }
+
+/* KaTeX Math Styling */
+.katex {
+  font-size: inherit !important;
+  color: var(--white) !important;
+}
+
+.katex-display {
+  margin: 1.5rem 0 !important;
+  text-align: center;
+}
+
+.katex .base {
+  color: var(--white) !important;
+}
+
+/* Math elements styling */
+span.math.math-inline {
+  color: var(--white);
+}
+
+div.math.math-display {
+  margin: 1.5rem 0;
+  text-align: center;
+  color: var(--white);
+}
