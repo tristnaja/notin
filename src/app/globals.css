@@ -2,6 +2,7 @@
 
 :root {
   --black: #000306;
+  --transparent-black: rgba(0, 3, 6, 0.1);
   --white: #f9fcff;
   --white-opacity-60: rgba(249, 252, 255, 0.6);
   --white-opacity-50: rgba(249, 252, 255, 0.5);
@@ -9,6 +10,7 @@
   --grey-opacity-40: rgba(249, 251, 255, 0.4);
   --white-opacity-20: rgba(249, 252, 255, 0.2);
   --grey: #141414;
+  --light-grey: #212121;
   --blue: #57aef5;
   --blue-opacity-40: rgba(87, 174, 245, 0.4);
   --red: #f55757;
@@ -23,10 +25,12 @@
   --font-mono: var(--font-geist-mono);
   --font-khula: var(--font-khula);
   --color-black: var(--black);
+  --color-transparent-black: var(--transparent-black);
   --color-white: var(--white);
   --color-white-opacity-50: var(--white-opacity-50);
   --color-grey-opacity-40: var(--grey-opacity-40);
   --color-grey: var(--grey);
+  --color-light-grey: var(--light-grey);
   --color-blue: var(--blue);
   --color-blue-opacity-40: var(--blue-opacity-40);
   --color-red: var(--red);

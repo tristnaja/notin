@@ -54,7 +54,7 @@ function Hero() {
         </div>
       </div>
       <div className="hidden md:flex gap-10 mt-12">
-        <Link href="/dashboard">
+        <Link href="/home">
           <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 transition-all duration-100 md:w-[200px] md:h-[60px] lg:w-[220px] lg:h-[70px] flex justify-center items-center rounded-full cursor-pointer">
             <p
               className="mt-1 font-bold"

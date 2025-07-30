@@ -44,7 +44,7 @@ function Footer() {
             </h1>
             <ul className="flex flex-row justify-center lg:justify-start items-center lg:items-start flex-wrap lg:flex-nowrap lg:flex-col font-light text-[12px] lg:text-[20px] gap-6">
               <li className="scale-100 hover:scale-105 hover:text-white-opacity-50 transition-all duration-200">
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/home">Dashboard</Link>
               </li>
               <li className="scale-100 hover:scale-105 hover:text-white-opacity-50 transition-all duration-200">
                 <Link href="/documentation">Documentation</Link>
@@ -67,7 +67,7 @@ function Footer() {
           2025 @ NOTIN. All rights reserved.
         </p>
         <div className="flex gap-2 w-100 h-auto justify-center items-center">
-          <Link href="https://github.com/tristanaja" target="_blank">
+          <Link href="https://github.com/tristanaja/notin" target="_blank">
             <Image
               src="/landing/github-icon.svg"
               alt="Icon GitHub"

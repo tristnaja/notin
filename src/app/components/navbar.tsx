@@ -48,7 +48,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="hidden lg:flex w-full justify-end items-center">
-        <Link href="/sign-in">
+        <Link href="/auth/sign-in">
           <div className="bg-red-alert hover:bg-red-indicator scale-100 hover:scale-105 w-max rounded-md cursor-pointer transition-all duration-100">
             <p className="px-6 py-2 m-0 font-bold">Sign In</p>
           </div>
@@ -102,7 +102,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <Link href="/sign-in">
+        <Link href="/auth/sign-in">
           <div className="bg-red-alert rounded-md cursor-pointer self-center w-full hover:bg-red-indicator transition-colors duration-100">
             <p className="px-6 py-3 m-0 font-bold text-center">SIGN IN</p>
           </div>
