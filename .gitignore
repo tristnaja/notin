@@ -62,6 +62,7 @@ next-env.d.ts
 # IDE and Editor files
 .vscode/
 .idea/
+.crush/
 *.swp
 *.swo
 *~
@@ -229,6 +230,7 @@ test-*.ts
 CONTEXT.md
 CLAUDE.md
 **.CLAUDE.md
+CRUSH.md
 
 # Project specific ignores
 public/uploads/
