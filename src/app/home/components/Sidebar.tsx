@@ -5,7 +5,11 @@ import { useState } from "react";
 import NoteItem from "./Sidebar.NoteItem";
 import Link from "next/link";
 
-function Sidebar() {
+type SidebarProps = {
+    onNewNote?: () => void;
+};
+
+function Sidebar({ onNewNote }: SidebarProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isLogoHovered, setIsLogoHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
@@ -76,7 +80,7 @@ function Sidebar() {
                 </div>
                 {!isCollapsed && (
                     <>
-                        <button className="cursor-pointer bg-[#266293] hover:bg-blue w-full py-1 rounded-md font-bold text-[16px] pt-2">
+                        <button onClick={onNewNote} className="cursor-pointer bg-[#266293] hover:bg-blue w-full py-1 rounded-md font-bold text-[16px] pt-2">
                             New Note
                         </button>
                         <div className="flex flex-col gap-2">
