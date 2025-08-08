@@ -1,111 +1,207 @@
 # Notin - AI-Powered Note Generator
 
-**Notin** is a modern, AI-driven web application designed to streamline your note-taking process. This landing page serves as the gateway to a powerful tool that helps students, professionals, and creators generate insightful and organized notes effortlessly.
+**Notin** is a modern, AI-driven web application designed to streamline your note-taking process with advanced markdown rendering, syntax highlighting, and LaTeX math support. This full-stack application provides a professional note-taking experience for students, developers, and creators.
 
-## ✨ Features
+## ✨ Key Features
 
-- **Responsive Design:** A clean and modern user interface that works seamlessly across all devices.
-- **AI-Powered Generation:** (Coming Soon) Leverage the power of AI to create notes from various inputs.
-- **Intuitive Navigation:** Easy-to-use navigation to explore the application's features.
+- **🎨 Modern Landing Page:** Responsive marketing site with Lottie animations
+- **🔐 Authentication System:** Complete sign-in, sign-up, and password recovery flows
+- **📝 Advanced Markdown Editor:** Professional-grade markdown rendering with 180+ programming languages
+- **🧮 LaTeX Math Support:** Full mathematical notation rendering with KaTeX
+- **📱 Responsive Design:** Mobile-first design that works seamlessly across all devices
+- **🚀 High Performance:** Server-side rendering with optimized bundle sizes
+- **🔄 File-Based Content:** Markdown content management with hot-reload support
+
+## 🏗️ Project Architecture
+
+This monorepo contains both frontend and backend applications:
+
+```
+notin/
+├── frontend/           # Next.js 15.4.3 application
+│   ├── src/app/       # App Router with feature-based structure
+│   ├── src/content/   # Markdown content files
+│   └── public/        # Static assets organized by feature
+├── backend/           # API server (in development)
+└── README.md          # This file
+```
+
+### Frontend Architecture
+- **Framework:** Next.js 15.4.3 with App Router
+- **Language:** TypeScript with strict mode
+- **Styling:** Tailwind CSS 4.x
+- **Markdown:** react-markdown with GFM, syntax highlighting, and math support
+- **Animations:** Lottie animations for enhanced UX
+
+### Backend Architecture
+- **Status:** In development
+- **Planned:** RESTful API with user authentication and note persistence
 
 ## 🚀 Tech Stack
 
-This project is built with a modern, scalable, and efficient technology stack:
+### Frontend
+- **Next.js 15.4.3** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS 4.x** - Utility-first CSS framework
+- **react-markdown** - Markdown rendering with plugin ecosystem
+- **KaTeX** - LaTeX math rendering
+- **react-syntax-highlighter** - Code syntax highlighting
+- **@lottiefiles/dotlottie-react** - Animation support
 
-- **Framework:** [Next.js](https://nextjs.org/) 15.4.3 (with App Router)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) 4.x
-- **Animations:** [Lottie](https://lottiefiles.com/) for engaging animations
-- **State Management:** React `useState` for component-level state.
+### Development Tools
+- **ESLint** - Code linting with Next.js rules
+- **Turbopack** - Fast development builds
+- **PostCSS** - CSS processing
 
-## 🏁 Getting Started
-
-Follow these instructions to get a local copy of the project up and running for development and testing purposes.
+## 🏁 Quick Start
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/en/) (v20.x or later recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) or [pnpm](https://pnpm.io/)
+- [Node.js](https://nodejs.org/) v20.x or later
+- npm, yarn, or pnpm package manager
 
 ### Installation
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/notin.git
+   cd notin
+   ```
 
-    ```sh
-    git clone https://github.com/your-username/notin.git
-    cd notin
-    ```
+2. **Install frontend dependencies:**
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-2.  **Install dependencies:**
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
 
-    ```sh
-    npm install
-    ```
+4. **Open in browser:**
+   Visit [http://localhost:3000](http://localhost:3000)
 
-3.  **Run the development server:**
-    ```sh
-    npm run dev
-    ```
+## 📁 Detailed Project Structure
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## 📂 Project Structure
-
-The project follows a feature-based structure within the Next.js App Router paradigm.
-
+### Frontend Structure
 ```
-.
-├── eslint.config.mjs    # ESLint configuration for code linting.
-├── next-env.d.ts        # TypeScript declaration file for Next.js.
-├── next.config.ts       # Configuration file for Next.js.
-├── node_modules/        # Directory where project dependencies are stored.
-├── package-lock.json    # Records the exact versions of project dependencies.
-├── package.json         # Lists project dependencies and scripts.
-├── postcss.config.mjs   # Configuration for PostCSS (used by Tailwind CSS).
-├── public/              # Static assets (images, icons, etc.).
-│   ├── landing/         # Assets specific to the landing page.
-│   ├── logo-full.svg    # Full version of the project logo.
-│   └── logo-short.svg   # Short version of the project logo.
-├── README.md            # The main README file for the project.
-├── src/                 # Source code for the application.
-│   └── app/             # Core of the Next.js App Router.
-└── tsconfig.json        # TypeScript compiler configuration.
+frontend/
+├── src/app/
+│   ├── components/          # Landing page components
+│   ├── auth/               # Authentication pages
+│   ├── home/               # Dashboard with markdown editor
+│   │   └── components/     # Dashboard-specific components
+│   ├── documentation/      # App documentation
+│   └── styles/            # CSS modules
+├── src/content/markdown/   # Content management system
+│   ├── demo.md            # Comprehensive demo content
+│   ├── short-demo.md      # Quick demo
+│   ├── math-test.md       # Math testing content
+│   └── utils/             # Content reading utilities
+└── public/
+    ├── landing/           # Landing page assets
+    ├── auth/              # Authentication assets
+    └── home/              # Dashboard assets
 ```
 
-- **`/src/app`**: The core of the application, containing all routes, components, and layouts.
-- **`/src/app/components`**: Houses all the individual components like `Navbar`, `Hero`, `Features`, etc.
-- **`/public`**: Stores all static files that are publicly accessible.
+### Backend Structure (Planned)
+```
+backend/
+├── src/
+│   ├── routes/            # API route handlers
+│   ├── models/            # Database models
+│   ├── middleware/        # Authentication & validation
+│   └── utils/             # Helper functions
+├── tests/                 # Test suites
+└── package.json
+```
 
-## 📜 Available Scripts
+## 💻 Development Commands
 
-In the project directory, you can run:
+### Frontend Commands
+```bash
+cd frontend/
+npm run dev      # Start development server with Turbopack
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint code quality checks
+```
 
-- `npm run dev`: Starts the development server with hot-reloading.
-- `npm run build`: Builds the application for production.
-- `npm run start`: Starts a production server.
-- `npm run lint`: Runs the linter to check for code quality issues.
+### Backend Commands (Coming Soon)
+```bash
+cd backend/
+npm run dev      # Start development API server
+npm run test     # Run test suites
+npm run build    # Build for production
+```
 
-## 🗺️ Roadmap
+## 🎯 Current Implementation Status
 
-The future of Notin is exciting! Here's what's planned:
+### ✅ Completed Features
+- **Landing Page System:** Complete responsive marketing site
+- **Authentication UI:** Sign-in, sign-up, and forgot-password pages
+- **Advanced Dashboard:** Collapsible sidebar with hover interactions
+- **Markdown System:** Professional rendering with syntax highlighting
+- **Math Support:** LaTeX expressions with KaTeX
+- **File-Based Content:** Server-side markdown file management
+- **Performance Optimization:** Caching and bundle optimization
 
-1.  **User Authentication:** Implement a secure sign-in and registration system.
-2.  **User Dashboard:** Create a personalized dashboard for users to manage their notes.
-3.  **AI Note Generation:** Integrate the core AI functionality to generate notes.
-4.  **Database Integration:** Connect a database to store user data and notes.
+### 🚧 In Development
+- **Backend API:** User authentication and note persistence
+- **AI Integration:** Note generation functionality
+- **Database Layer:** User data and note storage
+
+### 📋 Planned Features
+- **Real-time Collaboration:** Multi-user note editing
+- **Advanced Organization:** Tags, folders, and search
+- **Export Options:** PDF, Word, HTML export
+- **Template System:** Pre-built note templates
+
+## 🧪 Advanced Features
+
+### Markdown Rendering
+- **180+ Languages:** Comprehensive syntax highlighting
+- **GitHub Flavored Markdown:** Tables, task lists, strikethrough
+- **LaTeX Math:** Inline (`$E = mc^2$`) and block math expressions
+- **Custom Styling:** Dark theme with consistent design
+
+### Collapsible Sidebar
+- **Responsive Design:** Viewport-based width units
+- **Smooth Animations:** CSS transitions with hover effects
+- **State Management:** React hooks for collapse/expand
+
+### Content Management
+- **Server-Side Reading:** Zero client bundle impact
+- **Caching System:** Memory cache with configurable TTL
+- **Hot Reload:** Development-friendly content updates
+- **Error Handling:** Graceful fallbacks for missing files
 
 ## 🤝 Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+We welcome contributions! Please follow our development guidelines:
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+### Commit Message Convention
+- `feat:` - New feature for users
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes
+- `style:` - Code formatting changes
+- `test:` - Adding or updating tests
+- `refactor:` - Code refactoring
+- `chore:` - Maintenance tasks
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+### Development Guidelines
+- Use TypeScript strict mode
+- Follow ESLint rules
+- Write meaningful commit messages
+- Test changes thoroughly
+- Update documentation as needed
 
 ## 📄 License
 
-Distributed under the MIT License.
+Distributed under the MIT License. See `LICENSE` file for more information.
+
+## 🔗 Links
+
+- **Repository:** [GitHub](https://github.com/your-username/notin)
+- **Documentation:** [Frontend README](./frontend/README.md)
+- **Backend API:** [Backend README](./backend/README.md)
