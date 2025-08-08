@@ -27,6 +27,7 @@ notin/
 ```
 
 ### Frontend Architecture
+
 - **Framework:** Next.js 15.4.3 with App Router
 - **Language:** TypeScript with strict mode
 - **Styling:** Tailwind CSS 4.x
@@ -34,12 +35,14 @@ notin/
 - **Animations:** Lottie animations for enhanced UX
 
 ### Backend Architecture
+
 - **Status:** In development
 - **Planned:** RESTful API with user authentication and note persistence
 
 ## 🚀 Tech Stack
 
 ### Frontend
+
 - **Next.js 15.4.3** - React framework with App Router
 - **TypeScript** - Type-safe JavaScript
 - **Tailwind CSS 4.x** - Utility-first CSS framework
@@ -49,6 +52,7 @@ notin/
 - **@lottiefiles/dotlottie-react** - Animation support
 
 ### Development Tools
+
 - **ESLint** - Code linting with Next.js rules
 - **Turbopack** - Fast development builds
 - **PostCSS** - CSS processing
@@ -56,24 +60,28 @@ notin/
 ## 🏁 Quick Start
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) v20.x or later
 - npm, yarn, or pnpm package manager
 
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/notin.git
    cd notin
    ```
 
 2. **Install frontend dependencies:**
+
    ```bash
    cd frontend
    npm install
    ```
 
 3. **Start development server:**
+
    ```bash
    npm run dev
    ```
@@ -84,6 +92,7 @@ notin/
 ## 📁 Detailed Project Structure
 
 ### Frontend Structure
+
 ```
 frontend/
 ├── src/app/
@@ -105,6 +114,7 @@ frontend/
 ```
 
 ### Backend Structure (Planned)
+
 ```
 backend/
 ├── src/
@@ -119,6 +129,7 @@ backend/
 ## 💻 Development Commands
 
 ### Frontend Commands
+
 ```bash
 cd frontend/
 npm run dev      # Start development server with Turbopack
@@ -128,6 +139,7 @@ npm run lint     # Run ESLint code quality checks
 ```
 
 ### Backend Commands (Coming Soon)
+
 ```bash
 cd backend/
 npm run dev      # Start development API server
@@ -138,6 +150,7 @@ npm run build    # Build for production
 ## 🎯 Current Implementation Status
 
 ### ✅ Completed Features
+
 - **Landing Page System:** Complete responsive marketing site
 - **Authentication UI:** Sign-in, sign-up, and forgot-password pages
 - **Advanced Dashboard:** Collapsible sidebar with hover interactions
@@ -147,11 +160,13 @@ npm run build    # Build for production
 - **Performance Optimization:** Caching and bundle optimization
 
 ### 🚧 In Development
+
 - **Backend API:** User authentication and note persistence
 - **AI Integration:** Note generation functionality
 - **Database Layer:** User data and note storage
 
 ### 📋 Planned Features
+
 - **Real-time Collaboration:** Multi-user note editing
 - **Advanced Organization:** Tags, folders, and search
 - **Export Options:** PDF, Word, HTML export
@@ -160,17 +175,20 @@ npm run build    # Build for production
 ## 🧪 Advanced Features
 
 ### Markdown Rendering
+
 - **180+ Languages:** Comprehensive syntax highlighting
 - **GitHub Flavored Markdown:** Tables, task lists, strikethrough
 - **LaTeX Math:** Inline (`$E = mc^2$`) and block math expressions
 - **Custom Styling:** Dark theme with consistent design
 
 ### Collapsible Sidebar
+
 - **Responsive Design:** Viewport-based width units
 - **Smooth Animations:** CSS transitions with hover effects
 - **State Management:** React hooks for collapse/expand
 
 ### Content Management
+
 - **Server-Side Reading:** Zero client bundle impact
 - **Caching System:** Memory cache with configurable TTL
 - **Hot Reload:** Development-friendly content updates
@@ -181,6 +199,7 @@ npm run build    # Build for production
 We welcome contributions! Please follow our development guidelines:
 
 ### Commit Message Convention
+
 - `feat:` - New feature for users
 - `fix:` - Bug fixes
 - `docs:` - Documentation changes
@@ -190,6 +209,7 @@ We welcome contributions! Please follow our development guidelines:
 - `chore:` - Maintenance tasks
 
 ### Development Guidelines
+
 - Use TypeScript strict mode
 - Follow ESLint rules
 - Write meaningful commit messages
@@ -202,6 +222,6 @@ Distributed under the MIT License. See `LICENSE` file for more information.
 
 ## 🔗 Links
 
-- **Repository:** [GitHub](https://github.com/your-username/notin)
+- **Repository:** [GitHub](https://github.com/tristanaja/notin)
 - **Documentation:** [Frontend README](./frontend/README.md)
 - **Backend API:** [Backend README](./backend/README.md)
