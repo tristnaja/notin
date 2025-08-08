@@ -19,7 +19,7 @@ function LottiePlayer({
   mt = 10,
   md_mt = 0,
 }: Props) {
-  const dotLottieRef = useRef<any>(null);
+  const dotLottieRef = useRef<any>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -32,9 +32,10 @@ function LottiePlayer({
       },
       { threshold: 1 }
     );
-    if (containerRef.current) observer.observe(containerRef.current);
+    const currentContainer = containerRef.current;
+    if (currentContainer) observer.observe(currentContainer);
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (currentContainer) observer.unobserve(currentContainer);
     };
   }, [src]);
 

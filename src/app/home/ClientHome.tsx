@@ -16,7 +16,7 @@ export default function ClientHome({ content }: ClientHomeProps) {
       <aside className="min-w-max w-[15dvw] max-w-max justify-self-start items-center bg-grey p-6 sticky top-0 max-h-[100dvh] transition-all duration-300">
         <Sidebar onNewNote={() => setIsModalOpen(true)} />
       </aside>
-      <main className="p-23 flex-1">
+      <main className="p-6 flex-1">
         <MarkdownRenderer content={content} />
       </main>
       <GenerateNoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

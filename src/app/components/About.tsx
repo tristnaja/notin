@@ -73,7 +73,7 @@ function About() {
             style={{ fontSize: "clamp(12px, 1vw, 1rem)" }}
           >
             At NOTIN, we believe that learning should be simple, fast, and free.
-            Whether you're studying for an exam, summarizing lectures, or
+            Whether you&apos;re studying for an exam, summarizing lectures, or
             organizing reading materials, NOTIN streamlines the process using
             the power of AI. By processing your YouTube links, PDFs, or Google
             Docs, NOTIN automatically generates clean, structured markdown notes

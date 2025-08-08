@@ -49,6 +49,7 @@ function GenerateNoteModal({ isOpen, onClose }: GenerateNoteModalProps) {
                                 {file && (
                                     <div style={{ marginTop: "20px" }}>
                                         <h4>Image Preview:</h4>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img src={file} alt="Uploaded File" style={{ maxWidth: "100%", height: "auto" }} />
                                     </div>
                                 )}
@@ -66,14 +67,14 @@ function GenerateNoteModal({ isOpen, onClose }: GenerateNoteModalProps) {
                 ) : (
                     <form action="post" className="bg-[#141414]/60 backdrop-blur-sm p-8 rounded-b-xl flex flex-col justify-center items-center gap-4">
                         <article className="flex flex-col gap-1">
-                            <label htmlFor="email" className="font-bold text-[16px]">
-                                Link
+                            <label htmlFor="ytlink" className="font-bold text-[16px]">
+                                YouTube Link
                             </label>
                             <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="name@example.com"
+                                type="url"
+                                id="ytlink"
+                                name="ytlink"
+                                placeholder="https://www.youtube.com/watch?v=example"
                                 required
                                 className="w-[55dvw] max-w-[412px] h-[48px] bg-grey rounded-lg border border-white-opacity-50 focus:border-blue focus:outline-none focus:ring-2 focus:ring-blue px-3 font-normal text-[12px]"
                             />
