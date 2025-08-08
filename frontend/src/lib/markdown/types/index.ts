@@ -37,6 +37,27 @@ export interface ContentReaderConfig {
 }
 
 /**
+ * Cache entry interface for internal use
+ */
+export interface CacheEntry {
+  content: string;
+  timestamp: number;
+  lastModified?: Date;
+}
+
+/**
+ * Cache statistics interface
+ */
+export interface CacheStats {
+  size: number;
+  entries: Array<{
+    type: MarkdownContentType;
+    timestamp: number;
+    isValid: boolean;
+  }>;
+}
+
+/**
  * Available markdown content files mapping
  */
 export const MARKDOWN_FILES: Record<MarkdownContentType, string> = {
@@ -58,3 +79,8 @@ Sorry, the requested content could not be loaded at this time.
 - Contact support if the problem persists
 
 > This is a fallback message displayed when content files are unavailable.`;
+
+/**
+ * All available markdown content types as array
+ */
+export const AVAILABLE_CONTENT_TYPES: MarkdownContentType[] = ['demo', 'short-demo', 'math-test'];
