@@ -1,0 +1,536 @@
+/* Responsive prose styles for markdown content */
+.prose {
+  max-width: none;
+  width: 100%;
+  /* Ensure proper text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Ensure proper alignment with title */
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.prose h1:first-child,
+.prose h2:first-child,
+.prose h3:first-child,
+.prose h4:first-child,
+.prose h5:first-child,
+.prose h6:first-child {
+  /* Ensure first heading aligns with title */
+  margin-top: 0;
+}
+
+.prose p:first-child,
+.prose ul:first-child,
+.prose ol:first-child,
+.prose blockquote:first-child,
+.prose pre:first-child,
+.prose table:first-child,
+.prose img:first-child {
+  /* Add top margin to first content element for visual separation */
+  margin-top: 1rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--white);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-weight: 600;
+  /* Prevent orphaned headings */
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.prose h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  margin-top: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose h3 {
+  font-size: clamp(1.125rem, 3vw, 1.5rem);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h4 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-top: 1.25rem;
+  margin-bottom: 0.875rem;
+}
+
+.prose h5 {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h6 {
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  margin-top: 0.875rem;
+  margin-bottom: 0.625rem;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  /* Prevent orphaned lines */
+  orphans: 2;
+  widows: 2;
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--color-grey);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--color-grey-opacity-40);
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  background-color: rgba(20, 20, 20, 0.3);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.prose blockquote p {
+  margin-bottom: 0;
+}
+
+.prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prose code {
+  background-color: var(--color-grey);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  color: var(--white);
+}
+
+.prose pre {
+  background-color: var(--color-grey);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  line-height: 1.5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  border: 1px solid var(--color-grey);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--color-grey);
+  padding: 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background-color: var(--color-light-grey);
+  font-weight: 600;
+  color: var(--white);
+}
+
+.prose td {
+  color: var(--white);
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: block;
+}
+
+.prose a {
+  color: var(--color-blue);
+  text-decoration: underline;
+  text-decoration-color: var(--color-blue-opacity-40);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--color-blue);
+  text-decoration-color: var(--color-blue);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-grey);
+  margin: 2rem 0;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.prose em {
+  font-style: italic;
+  color: var(--white);
+}
+
+.prose del {
+  text-decoration: line-through;
+  color: var(--white-opacity-50);
+}
+
+.prose mark {
+  background-color: var(--color-blue-opacity-40);
+  color: var(--white);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+/* Enhanced mobile-first responsive adjustments */
+@media (max-width: 640px) {
+  .prose h1 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose h2 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .prose h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose p,
+  .prose li {
+    line-height: 1.5;
+    margin-bottom: 0.875rem;
+  }
+
+  .prose blockquote {
+    padding-left: 0.75rem;
+    margin: 1.25rem 0;
+    padding: 0.75rem;
+  }
+
+  .prose pre {
+    padding: 0.75rem;
+    margin: 1.25rem 0;
+    border-radius: 0.375rem;
+  }
+
+  .prose table {
+    margin: 1.25rem 0;
+    font-size: 0.75rem;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.25rem;
+  }
+
+  /* Improve table readability on mobile */
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .prose h1 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose h2 {
+    margin-top: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose p,
+  .prose li {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .prose blockquote {
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .prose pre {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .prose table {
+    margin: 1.5rem 0;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 0.5rem;
+  }
+}
+
+/* Desktop responsive adjustments */
+@media (min-width: 1025px) {
+  .prose h1 {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .prose h2 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose p,
+  .prose li {
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .prose blockquote {
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .prose pre {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .prose table {
+    margin: 2rem 0;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 0.75rem;
+  }
+}
+
+/* Large desktop and ultra-wide screens */
+@media (min-width: 1440px) {
+  .prose h1 {
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .prose h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose p,
+  .prose li {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose blockquote {
+    padding-left: 2rem;
+    margin: 2.5rem 0;
+  }
+
+  .prose pre {
+    padding: 2rem;
+    margin: 2.5rem 0;
+  }
+
+  .prose table {
+    margin: 2.5rem 0;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 1rem;
+  }
+}
+
+/* Ultra-wide screen optimizations */
+@media (min-width: 1920px) {
+  .prose h1 {
+    margin-top: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .prose h2 {
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .prose h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .prose p,
+  .prose li {
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .prose {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .prose {
+    /* Already dark by default, but can add specific dark mode adjustments */
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .prose * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles for better readability */
+@media print {
+  .prose {
+    color: black !important;
+    background: white !important;
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    color: black !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .prose p,
+  .prose li {
+    orphans: 3 !important;
+    widows: 3 !important;
+    color: black !important;
+  }
+
+  .prose pre,
+  .prose blockquote {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .prose table {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .prose img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .prose a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .prose code {
+    background: #f5f5f5 !important;
+    color: black !important;
+  }
+
+  .prose pre {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+  }
+}

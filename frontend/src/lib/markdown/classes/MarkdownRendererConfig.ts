@@ -54,62 +54,71 @@ export class MarkdownRendererConfig {
     this.components = {
       h1: ({ children, ...props }) => 
         React.createElement('h1', {
-          className: "text-[48px] font-extrabold mb-8 leading-tight",
+          className: "font-extrabold mb-4 sm:mb-6 md:mb-8 leading-tight",
+          style: { fontSize: 'clamp(1.75rem, 4vw, 3rem)' },
           ...props
         }, children),
       h2: ({ children, ...props }) => 
         React.createElement('h2', {
-          className: "text-[36px] font-bold mb-6 mt-12 leading-tight",
+          className: "font-bold mb-3 sm:mb-4 md:mb-6 mt-8 sm:mt-10 md:mt-12 leading-tight",
+          style: { fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)' },
           ...props
         }, children),
       h3: ({ children, ...props }) => 
         React.createElement('h3', {
-          className: "text-[28px] font-bold mb-4 mt-10 leading-tight",
+          className: "font-bold mb-3 sm:mb-4 mt-6 sm:mt-8 md:mt-10 leading-tight",
+          style: { fontSize: 'clamp(1.25rem, 3vw, 1.75rem)' },
           ...props
         }, children),
       h4: ({ children, ...props }) => 
         React.createElement('h4', {
-          className: "text-[24px] font-semibold mb-4 mt-8 leading-tight",
+          className: "font-semibold mb-3 sm:mb-4 mt-6 sm:mt-8 leading-tight",
+          style: { fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)' },
           ...props
         }, children),
       h5: ({ children, ...props }) => 
         React.createElement('h5', {
-          className: "text-[20px] font-semibold mb-3 mt-6 leading-tight",
+          className: "font-semibold mb-2 sm:mb-3 mt-4 sm:mt-6 leading-tight",
+          style: { fontSize: 'clamp(1rem, 2vw, 1.25rem)' },
           ...props
         }, children),
       h6: ({ children, ...props }) => 
         React.createElement('h6', {
-          className: "text-[18px] font-medium mb-3 mt-6 leading-tight",
+          className: "font-medium mb-2 sm:mb-3 mt-4 sm:mt-6 leading-tight",
+          style: { fontSize: 'clamp(0.875rem, 1.8vw, 1.125rem)' },
           ...props
         }, children),
       p: ({ children, ...props }) => 
         React.createElement('p', {
-          className: "text-[24px] font-normal mb-6 leading-relaxed",
+          className: "font-normal mb-4 sm:mb-6 leading-relaxed",
+          style: { fontSize: 'clamp(0.875rem, 2vw, 1.5rem)' },
           ...props
         }, children),
       ul: ({ children, ...props }) => 
         React.createElement('ul', {
-          className: "ml-6 mb-6 space-y-2 list-disc",
+          className: "ml-3 sm:ml-4 md:ml-6 mb-4 sm:mb-6 space-y-1 sm:space-y-2 list-disc",
           ...props
         }, children),
       ol: ({ children, ...props }) => 
         React.createElement('ol', {
-          className: "ml-6 mb-6 space-y-2 list-decimal",
+          className: "ml-3 sm:ml-4 md:ml-6 mb-4 sm:mb-6 space-y-1 sm:space-y-2 list-decimal",
           ...props
         }, children),
       li: ({ children, ...props }) => 
         React.createElement('li', {
-          className: "text-[24px] font-normal leading-relaxed",
+          className: "font-normal leading-relaxed",
+          style: { fontSize: 'clamp(0.875rem, 2vw, 1.5rem)' },
           ...props
         }, children),
       blockquote: ({ children, ...props }) => 
         React.createElement('blockquote', {
-          className: "border-l-4 border-gray-600 pl-6 my-6 italic text-gray-300",
+          className: "border-l-4 border-gray-600 pl-3 sm:pl-4 md:pl-6 my-4 sm:my-6 italic text-gray-300",
+          style: { fontSize: 'clamp(0.875rem, 2vw, 1.5rem)' },
           ...props
         }, children),
       pre: ({ children }) => 
         React.createElement('div', {
-          className: "mb-6"
+          className: "mb-4 sm:mb-6"
         }, children),
       a: ({ children, href, ...props }) => 
         React.createElement('a', {
@@ -131,7 +140,7 @@ export class MarkdownRendererConfig {
         }, children),
       table: ({ children, ...props }) => 
         React.createElement('div', {
-          className: "overflow-x-auto mb-6"
+          className: "overflow-x-auto mb-4 sm:mb-6"
         }, React.createElement('table', {
           className: "min-w-full border-collapse border border-gray-600",
           ...props
@@ -150,12 +159,14 @@ export class MarkdownRendererConfig {
         }, children),
       td: ({ children, ...props }) => 
         React.createElement('td', {
-          className: "border border-gray-600 px-4 py-2 text-[20px]",
+          className: "border border-gray-600 px-2 sm:px-3 md:px-4 py-1 sm:py-2",
+          style: { fontSize: 'clamp(0.75rem, 1.5vw, 1.25rem)' },
           ...props
         }, children),
       th: ({ children, ...props }) => 
         React.createElement('th', {
-          className: "border border-gray-600 px-4 py-2 text-[20px] font-semibold text-left",
+          className: "border border-gray-600 px-2 sm:px-3 md:px-4 py-1 sm:py-2 font-semibold text-left",
+          style: { fontSize: 'clamp(0.75rem, 1.5vw, 1.25rem)' },
           ...props
         }, children),
     };
@@ -169,21 +180,22 @@ export class MarkdownRendererConfig {
       
       if (isInline) {
         return React.createElement('code', {
-          className: "bg-gray-800 text-green-400 px-2 py-1 rounded text-[20px] font-mono",
+          className: "bg-gray-800 text-green-400 px-1 sm:px-2 py-0.5 sm:py-1 rounded font-mono",
+          style: { fontSize: 'clamp(0.75rem, 1.5vw, 1.25rem)' },
           ...props
         }, children);
       }
       
       return React.createElement('div', {
-        className: "mb-6"
+        className: "mb-4 sm:mb-6"
       }, React.createElement(SyntaxHighlighter as unknown as React.ComponentType<Record<string, unknown>>, {
         style: oneDark,
         language: language || 'text',
         PreTag: "div",
-        className: "rounded-lg !p-4 !bg-[#282c34] overflow-x-auto",
+        className: "rounded-lg !p-2 sm:!p-3 md:!p-4 !bg-[#282c34] overflow-x-auto",
         customStyle: {
           margin: 0,
-          fontSize: '18px',
+          fontSize: 'clamp(0.75rem, 1.5vw, 1.125rem)',
           lineHeight: '1.5',
           fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace'
         }

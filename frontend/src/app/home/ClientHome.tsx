@@ -52,8 +52,8 @@ export default function ClientHome({
   };
 
   return (
-    <div className="flex flex-row min-h-screen w-screen bg-black">
-      <aside className="min-w-max w-[15dvw] max-w-max justify-self-start items-center bg-grey p-6 sticky top-0 max-h-[100dvh] transition-all duration-300">
+    <div className="flex flex-col sm:flex-row min-h-screen w-screen bg-black">
+      <aside className="w-[22dvw] lg:w-[20dvw] xl:w-[18dvw] 2xl:w-[16dvw] justify-self-start items-center sticky top-0 max-h-screen transition-all duration-300 z-10">
         <Sidebar
           onNewNote={() => setIsModalOpen(true)}
           contentManager={contentManager}
@@ -61,14 +61,16 @@ export default function ClientHome({
           onFileSelect={handleFileSelect}
         />
       </aside>
-      <main className="p-23 flex-1">
-        <div className="mb-6">
-          <h1 className="text-white-opacity-50 text-2xl font-bold">
+      <main className="p-4 pt-18 md:p-6 lg:p-8 xl:p-12 2xl:p-16 flex-1 flex flex-col items-start max-w-full md:max-w-[60dvw]">
+        <div className="mb-3">
+          <h1 className="text-white-opacity-50 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold break-words">
             {contentManager.getFileDisplayName(currentType)}
           </h1>
         </div>
 
-        <MarkdownRenderer content={currentContent} />
+        <div className="w-full max-w-none prose-container pl-0">
+          <MarkdownRenderer content={currentContent} />
+        </div>
       </main>
       <GenerateNoteModal
         isOpen={isModalOpen}

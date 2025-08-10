@@ -1,4 +1,8 @@
-import { MarkdownRendererEngine, MarkdownRendererConfig } from '../../../lib/markdown';
+import {
+  MarkdownRendererEngine,
+  MarkdownRendererConfig,
+} from "../../../lib/markdown";
+import styles from "./styles/MarkdownRenderer.module.css";
 
 interface MarkdownRendererProps {
   content: string;
@@ -6,11 +10,15 @@ interface MarkdownRendererProps {
   config?: MarkdownRendererConfig;
 }
 
-export default function MarkdownRenderer({ 
-  content, 
+export default function MarkdownRenderer({
+  content,
   className = "",
-  config
+  config,
 }: MarkdownRendererProps) {
   const engine = new MarkdownRendererEngine(config);
-  return engine.render(content, className);
+  return (
+    <div className={`${className} ${styles.prose} prose-responsive`}>
+      {engine.render(content, "")}
+    </div>
+  );
 }
