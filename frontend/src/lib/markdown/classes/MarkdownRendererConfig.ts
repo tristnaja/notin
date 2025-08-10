@@ -90,7 +90,7 @@ export class MarkdownRendererConfig {
         }, children),
       p: ({ children, ...props }) => 
         React.createElement('p', {
-          className: "font-normal mb-4 sm:mb-6 leading-relaxed",
+          className: "font-normal text-justify mb-4 sm:mb-6 leading-relaxed",
           style: { fontSize: 'clamp(0.875rem, 2vw, 1.5rem)' },
           ...props
         }, children),

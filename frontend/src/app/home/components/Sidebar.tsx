@@ -68,9 +68,9 @@ function Sidebar({
     <div
       className={`flex flex-col justify-between absolute top-0 left-0 ${
         isCollapsed
-          ? "items-start bg-black min-w-screen md:min-w-max max-h-screen md:h-screen drop-shadow-2xl"
+          ? "items-center flex-row md:flex-col border-b-2 border-white-opacity-50 md:border-0 bg-black md:bg-grey min-w-screen md:min-w-max max-h-screen md:h-screen drop-shadow-2xl"
           : "bg-grey h-screen min-w-max"
-      } p-3 sm:p-4 md:p-6`}
+      } p-4`}
     >
       <div
         className={`flex flex-col ${
@@ -159,13 +159,7 @@ function Sidebar({
           </>
         )}
       </div>
-      <div
-        className={`${
-          isCollapsed
-            ? "hidden sm:flex justify-center"
-            : "flex items-center justify-between"
-        }`}
-      >
+      <div className="flex items-center justify-between">
         {isCollapsed ? (
           <Image
             src="/home/user-default-avatar.svg"

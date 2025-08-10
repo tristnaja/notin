@@ -44,7 +44,6 @@
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   line-height: 1.2;
-  font-weight: 600;
   /* Prevent orphaned headings */
   page-break-after: avoid;
   break-after: avoid;
@@ -138,8 +137,8 @@
   background-color: var(--color-grey);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-    "Liberation Mono", Menlo, monospace;
+  /* font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+    "Liberation Mono", Menlo, monospace; */
   font-size: clamp(0.75rem, 2vw, 0.875rem);
   color: var(--white);
 }
