@@ -457,13 +457,6 @@
   }
 }
 
-/* Dark mode support (if needed) */
-@media (prefers-color-scheme: dark) {
-  .prose {
-    /* Already dark by default, but can add specific dark mode adjustments */
-  }
-}
-
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .prose * {
