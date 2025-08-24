@@ -39,19 +39,8 @@ CREATE TABLE notes (
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(500) NOT NULL,
   content TEXT NOT NULL,
-  tags TEXT[],
-  is_favorite BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
-);
-
--- Note sharing (future feature)
-CREATE TABLE note_shares (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  note_id UUID REFERENCES notes(id) ON DELETE CASCADE,
-  shared_with UUID REFERENCES users(id) ON DELETE CASCADE,
-  permission VARCHAR(20) CHECK (permission IN ('read', 'write', 'admin')),
-  created_at TIMESTAMP DEFAULT NOW()
 );
 ```
 
