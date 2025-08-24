@@ -1,47 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
 from .. import dependencies
-from .. import database, models, schemas, auth
+from .. import  models, schemas, auth
 import re
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
-
-# def get_db():
-#     db = database.SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
-
-# def get_current_user(request: Request, db=Depends(get_db)) -> models.User:
-#     token = request.cookies.get("access_token")
-#     if not token:
-#         raise HTTPException(
-#             status_code=status.HTTP_401_UNAUTHORIZED,
-#             detail="Not authenticated",
-#         )
-#     try:
-#         payload = auth.decode_access_token(token)
-#         email = payload.get("sub")
-#         if not email:
-#             raise HTTPException(
-#                 status_code=status.HTTP_401_UNAUTHORIZED,
-#                 detail="Invalid token",
-#             )
-#         user = db.query(models.User).filter(models.User.email == email).first()
-#         if not user:
-#             raise HTTPException(
-#                 status_code=status.HTTP_401_UNAUTHORIZED,
-#                 detail="User not found",
-#             )
-#         return user
-#     except Exception:
-#         raise HTTPException(
-#             status_code=status.HTTP_401_UNAUTHORIZED,
-#             detail="Invalid token",
-#         )
 
 @router.post("/register", response_model=schemas.UserResponse)
 def register_user(user: schemas.UserCreate, db: Session = Depends(dependencies.get_db)):
