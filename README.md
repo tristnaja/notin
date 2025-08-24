@@ -36,8 +36,10 @@ notin/
 
 ### Backend Architecture
 
-- **Status:** In development
-- **Planned:** RESTful API with user authentication and note persistence
+- **Status:** Implemented & Functional
+- **Framework:** FastAPI (Python)
+- **Database:** SQLAlchemy ORM for database interactions.
+- **Authentication:** JWT (JSON Web Tokens) for secure sessions.
 
 ## 🚀 Tech Stack
 
@@ -51,17 +53,26 @@ notin/
 - **react-syntax-highlighter** - Code syntax highlighting
 - **@lottiefiles/dotlottie-react** - Animation support
 
+### Backend
+
+- **FastAPI** - High-performance Python web framework.
+- **SQLAlchemy** - SQL toolkit and Object-Relational Mapper.
+- **Pydantic** - Data validation and settings management.
+- **python-jose** & **passlib** - For JWT creation/validation and password hashing.
+
 ### Development Tools
 
 - **ESLint** - Code linting with Next.js rules
 - **Turbopack** - Fast development builds
 - **PostCSS** - CSS processing
+- **Uvicorn** - ASGI server for running the FastAPI backend.
 
 ## 🏁 Quick Start
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) v20.x or later
+- Python 3.8+ & `pip`
 - npm, yarn, or pnpm package manager
 
 ### Installation
@@ -73,20 +84,36 @@ notin/
    cd notin
    ```
 
-2. **Install frontend dependencies:**
+2. **Setup Frontend:**
 
    ```bash
    cd frontend
    npm install
    ```
 
-3. **Start development server:**
+3. **Setup Backend:**
+   ```bash
+   cd ../backend
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   pip install -r requirements.txt
+   ```
 
+### Running the Application
+
+1. **Start the Backend Server:**
+   In the `/backend` directory:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+2. **Start the Frontend Development Server:**
+   In a separate terminal, from the `/frontend` directory:
    ```bash
    npm run dev
    ```
 
-4. **Open in browser:**
+3. **Open in browser:**
    Visit [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Detailed Project Structure
@@ -113,17 +140,21 @@ frontend/
     └── home/              # Dashboard assets
 ```
 
-### Backend Structure (Planned)
+### Backend Structure
 
 ```
 backend/
-├── src/
-│   ├── routes/            # API route handlers
-│   ├── models/            # Database models
-│   ├── middleware/        # Authentication & validation
-│   └── utils/             # Helper functions
-├── tests/                 # Test suites
-└── package.json
+├── app/
+│   ├── routes/
+│   │   └── users.py      # User and authentication routes
+│   ├── auth.py           # JWT and password handling
+│   ├── database.py       # Database connection
+│   ├── dependencies.py   # FastAPI dependencies
+│   ├── main.py           # FastAPI app initialization
+│   ├── models.py         # SQLAlchemy ORM models
+│   └── schemas.py        # Pydantic schemas
+├── requirements.txt      # Python dependencies
+└── README.md
 ```
 
 ## 💻 Development Commands
@@ -138,32 +169,37 @@ npm run start    # Start production server
 npm run lint     # Run ESLint code quality checks
 ```
 
-### Backend Commands (Coming Soon)
+### Backend Commands
 
 ```bash
+# Navigate to the backend directory
 cd backend/
-npm run dev      # Start development API server
-npm run test     # Run test suites
-npm run build    # Build for production
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the development server
+uvicorn app.main:app --reload
 ```
 
 ## 🎯 Current Implementation Status
 
 ### ✅ Completed Features
 
-- **Landing Page System:** Complete responsive marketing site
-- **Authentication UI:** Sign-in, sign-up, and forgot-password pages
-- **Advanced Dashboard:** Collapsible sidebar with hover interactions
-- **Markdown System:** Professional rendering with syntax highlighting
-- **Math Support:** LaTeX expressions with KaTeX
-- **File-Based Content:** Server-side markdown file management
-- **Performance Optimization:** Caching and bundle optimization
+- **Landing Page System:** Complete responsive marketing site.
+- **Authentication UI:** Sign-in, sign-up, and forgot-password pages.
+- **Backend API:** Functional user registration, login, and session management via JWT.
+- **Advanced Dashboard:** Collapsible sidebar with hover interactions.
+- **Markdown System:** Professional rendering with syntax highlighting.
+- **Math Support:** LaTeX expressions with KaTeX.
+- **File-Based Content:** Server-side markdown file management.
+- **Performance Optimization:** Caching and bundle optimization.
 
 ### 🚧 In Development
 
-- **Backend API:** User authentication and note persistence
-- **AI Integration:** Note generation functionality
-- **Database Layer:** User data and note storage
+- **Frontend-Backend Integration:** Connecting the Next.js frontend with the FastAPI backend for authentication.
+- **Note Management:** Implementing CRUD operations for notes on the backend.
+- **AI Integration:** Note generation functionality.
 
 ### 📋 Planned Features
 
