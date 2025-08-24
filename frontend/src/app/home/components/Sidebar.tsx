@@ -8,7 +8,7 @@ import {
   MarkdownContentManager,
   MarkdownContentType,
 } from "../../../lib/markdown";
-import { getCurrentUser } from "@/lib/api/auth";
+import { getCurrentUser, logoutUser } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/dist/client/components/navigation";
 
@@ -34,6 +34,35 @@ function Sidebar({
     null
   );
 
+  async function handleLogout() {
+    try {
+      await logoutUser();
+      toast.success("Logout successful!", {
+        style: {
+          "--normal-bg":
+            "light-dark(var(--color-green-600), var(--color-green-400))",
+          "--normal-text": "var(--color-white)",
+          "--normal-border":
+            "light-dark(var(--color-green-600), var(--color-green-400))",
+        } as React.CSSProperties,
+        position: "top-right",
+      });
+    } catch (error: any) {
+      toast.error(
+        error.message || "Oops, there was an error processing your request.",
+        {
+          style: {
+            "--normal-bg":
+              "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+            "--normal-text": "var(--color-white)",
+            "--normal-border": "transparent",
+          } as React.CSSProperties,
+          position: "top-right",
+        }
+      );
+    }
+  }
+
   useEffect(() => {
     const fetchCurrentUser = async () => {
       let currentUser = await getCurrentUser();
@@ -56,7 +85,6 @@ function Sidebar({
           position: "top-right",
         }
       );
-      router.push("/auth/sign-in");
     }
   }, []);
 
@@ -231,7 +259,8 @@ function Sidebar({
             onClick={toggleLogout}
           >
             <Link
-              href="#"
+              href="/auth/sign-in"
+              onClick={handleLogout}
               className={`${
                 isClicked
                   ? "translate-y-0 opacity-100"
