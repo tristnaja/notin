@@ -8,6 +8,9 @@ import {
   MarkdownContentManager,
   MarkdownContentType,
 } from "../../../lib/markdown";
+import { getCurrentUser } from "@/lib/api/auth";
+import { toast } from "sonner";
+import { useRouter } from "next/dist/client/components/navigation";
 
 type SidebarProps = {
   onNewNote?: () => void;
@@ -22,10 +25,40 @@ function Sidebar({
   currentType,
   onFileSelect,
 }: SidebarProps) {
+  const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isLargeViewport, setIsLargeViewport] = useState(false);
+  const [user, setUser] = useState<{ username: string; email: string } | null>(
+    null
+  );
+
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      let currentUser = await getCurrentUser();
+
+      setUser(currentUser);
+    };
+
+    try {
+      fetchCurrentUser();
+    } catch (error: any) {
+      toast.error(
+        error.message || "Oops, there was an error processing your request.",
+        {
+          style: {
+            "--normal-bg":
+              "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+            "--normal-text": "var(--color-white)",
+            "--normal-border": "transparent",
+          } as React.CSSProperties,
+          position: "top-right",
+        }
+      );
+      router.push("/auth/sign-in");
+    }
+  }, []);
 
   useEffect(() => {
     const checkViewportSize = () => {
@@ -219,9 +252,11 @@ function Sidebar({
                   className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
                 />
                 <div className="">
-                  <p className="font-bold text-sm sm:text-base">Username</p>
+                  <p className="font-bold text-sm sm:text-base">
+                    {user?.username}
+                  </p>
                   <p className="font-normal text-xs sm:text-sm text-white-opacity-50">
-                    name@example.com
+                    {user?.email}
                   </p>
                 </div>
               </div>
