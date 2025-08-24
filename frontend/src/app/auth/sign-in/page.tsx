@@ -130,8 +130,8 @@ export default function SignInPage() {
               </p>
               <div className="h-1 bg-white-opacity-50 flex-1" />
             </div>
-            <Link
-              href="/auth/sign-up"
+            <a
+              href="http://localhost:8000/auth/google/login"
               className="text-white flex bg-light-grey w-[55dvw] max-w-[412px] h-[52px] items-center justify-center gap-2 md:gap-3 rounded-lg font-bold"
               style={{ fontSize: "clamp(12px, 2.5vw, 20px)" }}
             >
@@ -143,7 +143,7 @@ export default function SignInPage() {
                 style={{ width: "clamp(1rem, 4dvw, 1.5rem)", height: "auto" }}
               />
               <p className="mt-1">Continue with Google</p>
-            </Link>
+            </a>
             <p className="text-white text-[12px] font-light flex gap-1 justify-center items-center cursor-not-allowed">
               Don&apos;t have an account?
               <Link href="/auth/sign-up" className="font-bold" replace>

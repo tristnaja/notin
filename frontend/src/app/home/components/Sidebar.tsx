@@ -47,6 +47,7 @@ function Sidebar({
         } as React.CSSProperties,
         position: "top-right",
       });
+      router.push("/auth/sign-in");
     } catch (error: any) {
       toast.error(
         error.message || "Oops, there was an error processing your request.",
@@ -258,8 +259,7 @@ function Sidebar({
             className="group flex flex-col items-center gap-3 sm:gap-4"
             onClick={toggleLogout}
           >
-            <Link
-              href="/auth/sign-in"
+            <button
               onClick={handleLogout}
               className={`${
                 isClicked
@@ -270,7 +270,7 @@ function Sidebar({
               <p className="text-center py-1.5 pt-2 font-extrabold text-sm sm:text-base">
                 Logout
               </p>
-            </Link>
+            </button>
             <div className="flex items-center gap-3 sm:gap-4 bg-grey z-10">
               <div className="flex items-center gap-2 cursor-pointer">
                 <Image

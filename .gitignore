@@ -231,6 +231,7 @@ test-*.ts
 CONTEXT.md
 CLAUDE.md
 **.CLAUDE.md
+**.GEMINI.md
 CRUSH.md
 
 # Project specific ignores
