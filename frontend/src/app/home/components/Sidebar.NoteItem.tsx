@@ -1,32 +1,24 @@
 "use client";
 import Image from "next/image";
-import { MarkdownContentType } from "../../../lib/markdown/types";
 
 interface NoteDetailProps {
   noteTitle: string;
-  noteType?: MarkdownContentType;
+  noteDate: string;
   isActive?: boolean;
   onClick?: () => void;
 }
 
 function NoteItem({
   noteTitle,
-  noteType,
+  noteDate,
   isActive = false,
   onClick,
 }: NoteDetailProps) {
-  const getIconForType = (type?: MarkdownContentType) => {
-    switch (type) {
-      case "demo":
-        return "/home/note-icon.svg";
-      case "short-demo":
-        return "/home/note-icon.svg";
-      case "math-test":
-        return "/home/note-icon.svg";
-      default:
-        return "/home/note-icon.svg";
-    }
-  };
+  function truncateText(text: string, wordLimit: number): string {
+    const words = text.split(" ");
+    if (words.length <= wordLimit) return text;
+    return words.slice(0, wordLimit).join(" ") + "...";
+  }
 
   return (
     <div
@@ -36,7 +28,7 @@ function NoteItem({
       onClick={onClick}
     >
       <Image
-        src={getIconForType(noteType)}
+        src="/home/note-icon.svg"
         alt="Notes Icon"
         width={20}
         height={20}
@@ -44,13 +36,11 @@ function NoteItem({
       />
       <div className="flex flex-col min-w-0 flex-1">
         <p className="text-xs sm:text-sm font-bold text-white pt-0.5 sm:pt-1 truncate">
-          {noteTitle}
+          {truncateText(noteTitle, 5)}
         </p>
-        {noteType && (
-          <span className="text-xs text-white-opacity-50 truncate">
-            {noteType}.md
-          </span>
-        )}
+        <span className="text-xs text-white-opacity-50 truncate">
+          {noteDate}
+        </span>
       </div>
     </div>
   );

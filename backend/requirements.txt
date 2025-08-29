@@ -10,3 +10,8 @@ authlib==1.3.0
 requests==2.31.0
 httpx>=0.24.0
 itsdangerous
+youtube-transcript-api
+pypdf2
+python-docx
+google-genai
+python-multipart

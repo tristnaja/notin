@@ -3,63 +3,52 @@ import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import GenerateNoteModal from "./components/GenerateNoteModal";
 import MarkdownRenderer from "./components/MarkdownRenderer";
+import { fetchAllNotes, Note } from "@/lib/api/notes";
+import { toast } from "sonner";
+import LottiePlayer from "../components/LottiePlayer";
 // Navigation now handled exclusively in the sidebar
-import {
-  MarkdownContentManager,
-  MarkdownNavigator,
-  MarkdownContentType,
-} from "../../lib/markdown";
-import Image from "next/image";
 
-interface ClientHomeProps {
-  initialContent: string;
-  initialType?: MarkdownContentType;
-  allContent: Record<MarkdownContentType, string>;
-}
-
-export default function ClientHome({
-  initialContent,
-  initialType = "demo",
-  allContent,
-}: ClientHomeProps) {
+export default function ClientHome() {
+  const [notes, setNotes] = useState<Note[]>([]);
+  const [activeNote, setActiveNote] = useState<Note | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentContent, setCurrentContent] = useState(initialContent);
-  const [currentType, setCurrentType] =
-    useState<MarkdownContentType>(initialType);
-  const [contentManager] = useState(() => new MarkdownContentManager());
-  const [navigator] = useState(() => new MarkdownNavigator(contentManager));
+  const [isLoading, setIsLoading] = useState(true);
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
-    const initializeContent = async () => {
-      await contentManager.setCurrentContent(initialContent, initialType);
-      await contentManager.loadContent(initialType, initialContent);
-      await contentManager.loadAllContent(allContent);
-
-      navigator.setNavigationCallback((type, content) => {
-        setCurrentType(type);
-        setCurrentContent(content);
-      });
-    };
-
-    initializeContent();
-  }, [initialContent, initialType, allContent, contentManager, navigator]);
-
-  const handleFileSelect = async (type: MarkdownContentType) => {
-    try {
-      await navigator.goTo(type);
-    } catch (error) {
-      console.error("Failed to navigate to file:", error);
+    async function fetchNotes() {
+      try {
+        const userNotes = await fetchAllNotes();
+        setNotes(userNotes);
+        if (userNotes.length > 0) {
+          setActiveNote(userNotes[0]);
+        }
+      } catch (error: any) {
+        toast.error(error.message || "Failed to fetch notes");
+      } finally {
+        setIsLoading(false);
+      }
     }
+
+    fetchNotes();
+  }, [refreshTrigger]);
+
+  const handleNoteGenerated = () => {
+    setRefreshTrigger((prev) => prev + 1);
   };
 
   return (
-    <div className="flex flex-col md:justify-center sm:flex-row min-h-screen w-screen bg-black">
+    <div
+      className={`flex flex-col ${
+        isLoading || activeNote ? "justify-center" : ""
+      } md:justify-center sm:flex-row min-h-screen w-screen bg-black`}
+    >
       <aside className="w-max justify-self-start items-center fixed left-0 top-0 max-h-screen transition-all duration-300 z-10">
         <Sidebar
+          notes={notes}
+          activeNote={activeNote}
+          onSelectNote={setActiveNote}
           onNewNote={() => setIsModalOpen(true)}
-          contentManager={contentManager}
-          currentType={currentType}
-          onFileSelect={handleFileSelect}
         />
       </aside>
       <svg
@@ -86,20 +75,38 @@ export default function ClientHome({
           strokeLinejoin="round"
         />
       </svg>
-      <main className="p-4 pt-24 md:p-6 lg:p-8 xl:p-12 2xl:p-16 flex flex-col items-start max-w-full md:max-w-[60dvw]">
-        <div className="mb-3">
-          <h1 className="text-white-opacity-50 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold break-words">
-            {contentManager.getFileDisplayName(currentType)}
-          </h1>
-        </div>
-
-        <div className="w-full max-w-none prose-container pl-0">
-          <MarkdownRenderer content={currentContent} />
-        </div>
+      <main
+        className={`p-4 pt-24 md:p-6 lg:p-8 xl:p-12 2xl:p-16 flex flex-col items-start ${
+          activeNote || isLoading ? "justify-start" : "justify-center"
+        } max-w-full md:max-w-[60dvw]`}
+      >
+        {isLoading ? (
+          <p>Loading notes...</p>
+        ) : activeNote ? (
+          <>
+            <div className="mb-3">
+              <h1 className="text-white-opacity-50 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold break-words">
+                {activeNote.title}
+              </h1>
+            </div>
+            <div className="w-full max-w-none prose-container pl-0">
+              <MarkdownRenderer content={activeNote.content} />
+            </div>
+          </>
+        ) : (
+          <div className="max-w-130 md:w-200 overflow-hidden relative flex flex-col justify-center items-center">
+            <LottiePlayer src="/home/astronout.lottie" />
+            <p className="justify-center items-center text-center text-white-opacity-50 text-[20px] font-medium">
+              Nothing Here! Create one!
+            </p>
+          </div>
+        )}
       </main>
+
       <GenerateNoteModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onNoteGenerated={handleNoteGenerated}
       />
     </div>
   );

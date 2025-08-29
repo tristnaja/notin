@@ -3,28 +3,19 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import NoteItem from "./Sidebar.NoteItem";
-import Link from "next/link";
-import {
-  MarkdownContentManager,
-  MarkdownContentType,
-} from "../../../lib/markdown";
 import { getCurrentUser, logoutUser } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/dist/client/components/navigation";
+import { Note } from "@/lib/api/notes";
 
 type SidebarProps = {
+  notes: Note[];
+  activeNote: Note | null;
+  onSelectNote: (note: Note) => void;
   onNewNote?: () => void;
-  contentManager?: MarkdownContentManager;
-  currentType?: MarkdownContentType;
-  onFileSelect?: (type: MarkdownContentType) => void;
 };
 
-function Sidebar({
-  onNewNote,
-  contentManager,
-  currentType,
-  onFileSelect,
-}: SidebarProps) {
+function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
   const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
@@ -33,6 +24,16 @@ function Sidebar({
   const [user, setUser] = useState<{ username: string; email: string } | null>(
     null
   );
+
+  function formatDate(dateString: string): string {
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
+      .format(new Date(dateString))
+      .replace(/ /g, " ");
+  }
 
   async function handleLogout() {
     try {
@@ -188,33 +189,25 @@ function Sidebar({
                 <h2 className="font-bold text-xs sm:text-sm text-white-opacity-50 pt-1">
                   Your Notes
                 </h2>
-                {contentManager && (
-                  <span className="text-xs text-white-opacity-30 bg-light-grey px-2 py-1 pt-2 rounded">
-                    {contentManager.getFileCount()} files
-                  </span>
-                )}
+                <span className="text-xs text-white-opacity-30 bg-light-grey px-2 py-1 pt-2 rounded">
+                  {notes.length} note(s)
+                </span>
               </div>
-              <div className="flex flex-col gap-2">
-                {contentManager ? (
-                  contentManager
-                    .getAvailableFiles()
-                    .map((type) => (
-                      <NoteItem
-                        key={type}
-                        noteTitle={contentManager.getFileDisplayName(type)}
-                        noteType={type}
-                        isActive={currentType === type}
-                        onClick={() => onFileSelect?.(type)}
-                      />
-                    ))
+              <div className="flex flex-col gap-2 max-h-[50dvh] overflow-y-auto scrollbar scrollbar-thumb-rounded-md scrollbar-track-rounded-md scrollbar-thumb-transparent border-b-2 border-white-opacity-40 pb-1">
+                {notes.length > 0 ? (
+                  notes.map((note) => (
+                    <NoteItem
+                      key={note.id}
+                      noteTitle={note.title}
+                      noteDate={formatDate(note.created_at)}
+                      isActive={activeNote?.id === note.id}
+                      onClick={() => onSelectNote(note)}
+                    />
+                  ))
                 ) : (
-                  <>
-                    <NoteItem noteTitle="Note Title" />
-                    <NoteItem noteTitle="Note Title" />
-                    <NoteItem noteTitle="Note Title" />
-                    <NoteItem noteTitle="Note Title" />
-                    <NoteItem noteTitle="Note Title" />
-                  </>
+                  <p className="text-white-opacity-50 text-[14px] justify-center items-center w-full text-center my-4">
+                    No notes yet. Make your first note!
+                  </p>
                 )}
               </div>
             </div>

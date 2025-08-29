@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 
 from . import models, database
-from .routes import users, google
+from .routes import users, google, notes
 
 models.Base.metadata.create_all(bind=database.engine)
 
@@ -12,6 +12,7 @@ app = FastAPI()
 
 app.include_router(users.router)
 app.include_router(google.router)
+app.include_router(notes.router)
 
 app.add_middleware(
     CORSMiddleware,
