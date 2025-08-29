@@ -8,12 +8,19 @@ import { registerUser } from "../../../lib/api/auth";
 import { toast } from "sonner";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 
+/**
+ * A page for users to sign up for a new account.
+ */
 export default function SignInPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  /**
+   * Handles the form submission for user registration.
+   * @param formData The form data containing the user's email, username, password, and confirm password.
+   */
   async function handleSubmit(formData: FormData) {
     const email = formData.get("email") as string;
     const username = formData.get("username") as string;

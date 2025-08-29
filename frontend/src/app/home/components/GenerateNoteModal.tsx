@@ -13,6 +13,12 @@ type GenerateNoteModalProps = {
   onNoteGenerated: (note: any) => void;
 };
 
+/**
+ * A modal for generating new notes from various sources.
+ * @param isOpen Whether the modal is open.
+ * @param onClose A function to close the modal.
+ * @param onNoteGenerated A function to handle the newly generated note.
+ */
 function GenerateNoteModal({
   isOpen,
   onClose,
@@ -23,6 +29,10 @@ function GenerateNoteModal({
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Handles the file change event.
+   * @param uploadedFile The file uploaded by the user.
+   */
   const handleFileChange = (uploadedFile: File | File[]) => {
     const selectedFile = Array.isArray(uploadedFile)
       ? uploadedFile[0]
@@ -30,6 +40,10 @@ function GenerateNoteModal({
     setFile(selectedFile);
   };
 
+  /**
+   * Handles the form submission for generating a new note.
+   * @param event The form submission event.
+   */
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
@@ -67,10 +81,16 @@ function GenerateNoteModal({
     }
   }
 
+  /**
+   * Toggles the modal to show the document upload form.
+   */
   const toggleDocument = () => {
     setIsDocument(true);
   };
 
+  /**
+   * Toggles the modal to show the YouTube URL input form.
+   */
   const toggleYT = () => {
     setIsDocument(false);
   };

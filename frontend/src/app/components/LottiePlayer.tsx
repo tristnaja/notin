@@ -11,6 +11,15 @@ type Props = {
   md_mt?: number;
 };
 
+/**
+ * A component to render Lottie animations.
+ * @param src The source URL of the Lottie animation.
+ * @param loop Whether the animation should loop.
+ * @param autoplay Whether the animation should play automatically.
+ * @param dotLottieRefCallback A callback to get the Lottie instance.
+ * @param mt The margin-top for the component.
+ * @param md_mt The margin-top for the component on medium screens.
+ */
 function LottiePlayer({
   src,
   loop = true,

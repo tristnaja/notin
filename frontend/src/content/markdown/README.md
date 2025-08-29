@@ -9,6 +9,7 @@ src/content/markdown/
 ├── demo.md              # Comprehensive demo content (~280 lines)
 ├── short-demo.md        # Quick demo content (~10 lines)
 ├── math-test.md         # Math testing content (~15 lines)
+├── responsive-test.md   # Responsive design testing content
 ├── README.md            # This file - editing guidelines
 └── utils/
     ├── reader.ts        # File reading utilities
@@ -36,6 +37,11 @@ src/content/markdown/
 - **Features**: Inline and block math, Greek letters, fractions
 - **Size**: ~15 lines, ~300 bytes
 
+### `responsive-test.md`
+- **Purpose**: Testing responsive behavior of markdown elements
+- **Usage**: Verification of responsive design across different screen sizes
+- **Features**: Headings, text, lists, code blocks, blockquotes, tables, etc.
+
 ## Editing Guidelines
 
 ### LaTeX Math Syntax
@@ -52,13 +58,13 @@ $$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$
 ### Code Blocks
 Use fenced code blocks with language specification:
 
-```markdown
+````markdown
 ```javascript
 function example() {
   return "Hello World";
 }
 ```
-```
+````
 
 Supported languages include: `javascript`, `python`, `css`, `sql`, `json`, `yaml`, `bash`, `html`, `typescript`, and many more.
 

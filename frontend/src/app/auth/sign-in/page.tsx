@@ -8,11 +8,18 @@ import { useRouter } from "next/dist/client/components/navigation";
 import { toast } from "sonner";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 
+/**
+ * A page for users to sign in to their accounts.
+ */
 export default function SignInPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  /**
+   * Handles the form submission for user login.
+   * @param formData The form data containing the user's email and password.
+   */
   async function handleSubmit(formData: FormData) {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;

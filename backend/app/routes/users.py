@@ -10,6 +10,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 
 @router.post("/register", response_model=schemas.UserResponse)
 def register_user(user: schemas.UserCreate, db: Session = Depends(dependencies.get_db)):
+    """Registers a new user."""
     db_user = db.query(models.User).filter(models.User.email == user.email).first()
     if db_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
@@ -36,6 +37,7 @@ def register_user(user: schemas.UserCreate, db: Session = Depends(dependencies.g
 
 @router.post("/login")
 def login(user: schemas.UserLogin, db: Session = Depends(dependencies.get_db)):
+    """Logs in a user and returns an access token in a cookie."""
     db_user = db.query(models.User).filter(models.User.email == user.email).first()
     if not db_user or not auth.verify_password(user.password, db_user.hashed_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Credentials.")
@@ -52,10 +54,12 @@ def login(user: schemas.UserLogin, db: Session = Depends(dependencies.get_db)):
 
 @router.post("/logout")
 def logout():
+    """Logs out the user by deleting the access token cookie."""
     response = JSONResponse(content={"message": "Logged out successfully"})
     response.delete_cookie("access_token")
     return response
 
 @router.get("/me", response_model=schemas.UserOut)
 def get_me(current_user=Depends(dependencies.get_current_user)):
+    """Returns the current authenticated user's information."""
     return {"username": current_user.username, "email": current_user.email}

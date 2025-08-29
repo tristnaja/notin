@@ -14,6 +14,7 @@ def generate_note(
     db: Session = Depends(dependencies.get_db),
     current_user: models.User = Depends(dependencies.get_current_user)
 ):
+    """Generates a note from a given source (YouTube, PDF, or DOCX)."""
     text_content = ""
     title = "Generated Note"
 
@@ -59,5 +60,6 @@ def get_user_notes(
     db: Session = Depends(dependencies.get_db),
     current_user: models.User = Depends(dependencies.get_current_user)
 ):
+    """Retrieves all notes for the currently authenticated user."""
     notes = db.query(models.Note).filter(models.Note.owner_id == current_user.id).order_by(models.Note.created_at.desc()).all()
     return notes

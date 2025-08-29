@@ -11,11 +11,13 @@ router = APIRouter(prefix="/auth/google", tags=["Google Auth"])
 
 @router.get("/login")
 async def login_via_google(request: Request):
+    """Redirects the user to Google for authentication."""
     redirect_uri = request.url_for("google_auth_callback")
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
 @router.get("/callback", name="google_auth_callback")
 async def google_auth_callback(request: Request, db: Session = Depends(get_db)):
+    """Callback endpoint for Google OAuth."""
     try:
         token = await oauth.google.authorize_access_token(request)
     except Exception:

@@ -1,6 +1,9 @@
 "use client";
 import { useEffect } from "react";
 
+/**
+ * The developers section of the landing page.
+ */
 function Developers() {
   useEffect(() => {
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

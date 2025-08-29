@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * The footer component of the landing page.
+ */
 function Footer() {
   return (
     <section

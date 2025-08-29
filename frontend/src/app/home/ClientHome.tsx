@@ -8,6 +8,9 @@ import { toast } from "sonner";
 import LottiePlayer from "../components/LottiePlayer";
 // Navigation now handled exclusively in the sidebar
 
+/**
+ * The main client-side component for the home page, which manages the state of the notes and the modal.
+ */
 export default function ClientHome() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [activeNote, setActiveNote] = useState<Note | null>(null);
@@ -16,6 +19,9 @@ export default function ClientHome() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
+    /**
+     * Fetches all notes for the current user and updates the state.
+     */
     async function fetchNotes() {
       try {
         const userNotes = await fetchAllNotes();
@@ -33,6 +39,9 @@ export default function ClientHome() {
     fetchNotes();
   }, [refreshTrigger]);
 
+  /**
+   * Refreshes the notes list when a new note is generated.
+   */
   const handleNoteGenerated = () => {
     setRefreshTrigger((prev) => prev + 1);
   };

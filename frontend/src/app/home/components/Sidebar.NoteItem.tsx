@@ -8,12 +8,25 @@ interface NoteDetailProps {
   onClick?: () => void;
 }
 
+/**
+ * A component to display a single note item in the sidebar.
+ * @param noteTitle The title of the note.
+ * @param noteDate The date the note was created.
+ * @param isActive Whether the note is currently active.
+ * @param onClick A function to handle clicks on the note item.
+ */
 function NoteItem({
   noteTitle,
   noteDate,
   isActive = false,
   onClick,
 }: NoteDetailProps) {
+  /**
+   * Truncates a string to a specified number of words.
+   * @param text The text to truncate.
+   * @param wordLimit The maximum number of words to keep.
+   * @returns The truncated text.
+   */
   function truncateText(text: string, wordLimit: number): string {
     const words = text.split(" ");
     if (words.length <= wordLimit) return text;
@@ -22,9 +35,8 @@ function NoteItem({
 
   return (
     <div
-      className={`${
-        isActive ? "bg-blue" : "bg-transparent hover:bg-gray-800"
-      } pl-1 pr-2 py-1 sm:py-1.5 flex items-center gap-2 hover:border-2 border-blue rounded-md transition-all duration-75 cursor-pointer`}
+      className={`${isActive ? "bg-blue" : "bg-transparent hover:bg-gray-800"
+        } pl-1 pr-2 py-1 sm:py-1.5 flex items-center gap-2 hover:border-2 border-blue rounded-md transition-all duration-75 cursor-pointer`}
       onClick={onClick}
     >
       <Image

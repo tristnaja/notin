@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+/**
+ * The features section of the landing page.
+ */
 function Features() {
   return (
     <section

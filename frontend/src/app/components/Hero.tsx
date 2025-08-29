@@ -3,6 +3,9 @@ import styles from "../styles/Hero.module.css";
 import LottiePlayer from "./LottiePlayer";
 import Link from "next/link";
 
+/**
+ * The hero section of the landing page.
+ */
 function Hero() {
   return (
     <section

@@ -5,6 +5,7 @@ from . import database, auth, models
 
 
 def get_db():
+    """Gets a database session."""
     db = database.SessionLocal()
     try:
         yield db
@@ -12,6 +13,7 @@ def get_db():
         db.close()
 
 def get_current_user(request: Request, db: Session = Depends(get_db)) -> models.User:
+    """Gets the current user from the access token."""
     token = request.cookies.get("access_token")
     if not token:
         raise HTTPException(

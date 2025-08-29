@@ -16,6 +16,7 @@ client = genai.Client(
 # model = genai.GenerativeModel('gemini-2.5-pro')
 
 def get_text_from_youtube(url: str) -> str:
+    """Extracts the transcript from a YouTube video."""
     parsed_url = urlparse(url)
     video_id = parse_qs(parsed_url.query).get("v")
     if not video_id:
@@ -27,6 +28,7 @@ def get_text_from_youtube(url: str) -> str:
     return transcript
 
 def get_text_from_pdf(file: io.BytesIO) -> str:
+    """Extracts text from a PDF file."""
     reader = PyPDF2.PdfReader(file)
     text = ""
     for page in reader.pages:
@@ -34,11 +36,13 @@ def get_text_from_pdf(file: io.BytesIO) -> str:
     return text
 
 def get_text_from_docx(file) -> str:
+    """Extracts text from a DOCX file."""
     doc = docx.Document(file)
     text = "/n".join([para.text for para in doc.paragraphs])
     return text
 
 def generate_notes_from_text(text: str) -> str:
+    """Generates structured markdown notes from a given text using a generative AI model."""
     prompt = f"""
         Convert the following text into **beautifully structured Markdown notes** optimized for Notin.
 
@@ -71,6 +75,7 @@ def generate_notes_from_text(text: str) -> str:
     return response.text
 
 def generate_notes_title_from_text(text: str) -> str:
+    """Generates a concise title from a given text using a generative AI model."""
     prompt = f"""
         Convert the following text into a **concise title** optimized for the appropriate input.
 

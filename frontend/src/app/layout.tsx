@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   description: "AI-Powered Note Generator",
 };
 
+/**
+ * The root layout for the application.
+ * @param children The children to render.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

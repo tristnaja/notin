@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+/**
+ * The navigation bar component.
+ */
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

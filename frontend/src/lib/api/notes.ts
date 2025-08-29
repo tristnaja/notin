@@ -7,6 +7,11 @@ export interface Note {
     created_at: string;
 }
 
+/**
+ * Generates a new note from a given source.
+ * @param formData The form data containing the source type, source, and URL.
+ * @returns The newly generated note.
+ */
 export async function generateNote(formData: FormData) {
     const response = await fetch("http://localhost:8000/notes/generate", {
         method: "POST",
@@ -20,6 +25,10 @@ export async function generateNote(formData: FormData) {
     return await response.json();
 }
 
+/**
+ * Fetches all notes for the current user.
+ * @returns A list of notes.
+ */
 export async function fetchAllNotes(): Promise<Note[]> {
     const response = await fetch("http://localhost:8000/notes/collect", {
         method: "GET",

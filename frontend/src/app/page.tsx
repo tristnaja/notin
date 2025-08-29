@@ -5,6 +5,9 @@ import Features from "./components/Features";
 import Developers from "./components/Developers";
 import Footer from "./components/Footer";
 
+/**
+ * The main landing page for the application.
+ */
 export default function LandingPage() {
   return (
     <div className="max-w-[1600px] mx-auto overflow-clip animate-slide-fade-in">

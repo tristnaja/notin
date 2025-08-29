@@ -28,6 +28,7 @@ npm run lint   # Run code quality checks
 - **Language:** TypeScript (strict mode)
 - **Styling:** Tailwind CSS 4.x with PostCSS
 - **Markdown:** react-markdown with GFM, syntax highlighting, and LaTeX
+- **Notifications:** Sonner (for toast notifications)
 - **Build System:** Turbopack for development
 - **Code Quality:** ESLint with Next.js rules
 
@@ -40,7 +41,8 @@ npm run lint   # Run code quality checks
   "react-syntax-highlighter": "^15.6.1",
   "katex": "^0.16.22",
   "@lottiefiles/dotlottie-react": "^0.8.7",
-  "tailwindcss": "^4.0.0"
+  "tailwindcss": "^4.0.0",
+  "sonner": "^2.0.7"
 }
 ```
 
@@ -76,23 +78,17 @@ src/
 │   ├── globals.css            # Global styles
 │   ├── layout.tsx             # Root layout
 │   └── page.tsx               # Landing page
-├── content/                    # Content management system
-│   └── markdown/              # Markdown content files
-│       ├── demo.md           # Comprehensive demo content
-│       ├── short-demo.md     # Quick demo
-│       ├── math-test.md      # Math testing content
-│       ├── README.md         # Content editing guide
-│       └── utils/            # Content utilities
-│           ├── index.ts      # Public API
-│           ├── reader.ts     # File reading utilities
-│           └── types.ts      # TypeScript interfaces
+├── lib/
+│   ├── api/                  # API communication layer
+│   │   ├── auth.ts            # Authentication API calls
+│   │   └── notes.ts           # Notes API calls
+│   └── markdown/              # Markdown rendering engine
+│       ├── classes/           # Core markdown classes
+│       ├── io/                # Server-side file I/O
+│       └── types/             # TypeScript types
+├── content/                    # Static markdown content
+│   └── markdown/
 └── public/                     # Static assets
-    ├── auth/                  # Authentication assets
-    ├── design/               # Reference designs
-    ├── home/                 # Dashboard assets
-    ├── landing/              # Landing page assets
-    ├── logo-full.svg
-    └── logo-short.svg
 ```
 
 ## 🎨 Component Architecture
@@ -117,6 +113,7 @@ src/
 - **ClientHome:** Main dashboard wrapper
 - **Sidebar:** Collapsible navigation with hover interactions
 - **MarkdownRenderer:** Professional markdown with syntax highlighting and LaTeX
+- **GenerateNoteModal:** Modal for creating new notes from various sources
 
 ### Advanced Features
 
@@ -147,10 +144,15 @@ src/
 - `/auth/forgot-password` - Password recovery
 - `/documentation` - Application documentation
 
-### Protected Routes (Future)
-- `/home` - Main dashboard (currently public for development)
-- `/home/notes/:id` - Individual note editing
-- `/home/settings` - User preferences
+### Protected Routes
+- `/home` - Main dashboard (protected by middleware)
+
+## 🌐 API Integration
+
+The frontend communicates with the backend API for user authentication and note management.
+
+- **`lib/api/auth.ts`**: Contains functions for user registration, login, logout, and fetching the current user.
+- **`lib/api/notes.ts`**: Contains functions for generating new notes and fetching all notes for the current user.
 
 ## 🎨 Design System
 
@@ -165,8 +167,11 @@ src/
 ```css
 /* Custom Tailwind colors */
 colors: {
-  grey: '#...',     /* Sidebar background */
-  /* Using standard Tailwind colors for consistency */
+  grey: '#141414',
+  light-grey: '#212121',
+  blue: '#57AEF5',
+  red: '#F55757',
+  /* ...and more */
 }
 ```
 
@@ -220,7 +225,8 @@ colors: {
 - **Display math:** `$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$`
 - **Greek letters:** α, β, γ, Δ, ∑, ∏
 - **Fractions:** `$\frac{a}{b}$`
-- **Matrices:** `$$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$$`
+- **Matrices:** `$$\begin{pmatrix} a & b \ c & d 
+end{pmatrix}$$`
 
 ### Syntax Highlighting
 - **Theme:** Atom One Dark (`oneDark`)

@@ -2,6 +2,9 @@ import Image from "next/image";
 import styles from "../styles/BoxStyle.module.css";
 import LottiePlayer from "./LottiePlayer";
 
+/**
+ * The about section of the landing page.
+ */
 function About() {
   return (
     <section

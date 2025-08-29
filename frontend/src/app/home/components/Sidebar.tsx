@@ -15,6 +15,13 @@ type SidebarProps = {
   onNewNote?: () => void;
 };
 
+/**
+ * A collapsible sidebar component that displays a list of notes and user information.
+ * @param notes An array of notes to display.
+ * @param activeNote The currently active note.
+ * @param onSelectNote A function to handle selecting a note.
+ * @param onNewNote A function to handle creating a new note.
+ */
 function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
   const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -25,6 +32,11 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
     null
   );
 
+  /**
+   * Formats a date string to a more readable format.
+   * @param dateString The date string to format.
+   * @returns The formatted date string.
+   */
   function formatDate(dateString: string): string {
     return new Intl.DateTimeFormat("en-GB", {
       day: "2-digit",
@@ -35,6 +47,9 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
       .replace(/ /g, " ");
   }
 
+  /**
+   * Handles the user logout process.
+   */
   async function handleLogout() {
     try {
       await logoutUser();
@@ -66,6 +81,9 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
   }
 
   useEffect(() => {
+    /**
+     * Fetches the current user's information.
+     */
     const fetchCurrentUser = async () => {
       let currentUser = await getCurrentUser();
 
@@ -91,6 +109,9 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
   }, []);
 
   useEffect(() => {
+    /**
+     * Checks the viewport size to determine if the sidebar should be collapsible.
+     */
     const checkViewportSize = () => {
       setIsLargeViewport(window.innerWidth > 640);
     };
@@ -101,27 +122,42 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
     return () => window.removeEventListener("resize", checkViewportSize);
   }, []);
 
+  /**
+   * Toggles the collapsed state of the sidebar.
+   */
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
     setIsLogoHovered(false);
   };
 
+  /**
+   * Toggles the logout button visibility.
+   */
   const toggleLogout = () => {
     setIsClicked(!isClicked);
   };
 
+  /**
+   * Handles the mouse enter event for the logo.
+   */
   const handleLogoMouseEnter = () => {
     if (isCollapsed && isLargeViewport) {
       setIsLogoHovered(true);
     }
   };
 
+  /**
+   * Handles the mouse leave event for the logo.
+   */
   const handleLogoMouseLeave = () => {
     if (isCollapsed && isLargeViewport) {
       setIsLogoHovered(false);
     }
   };
 
+  /**
+   * Handles the click event for the logo.
+   */
   const handleLogoClick = () => {
     if (isCollapsed) {
       toggleCollapse();
@@ -254,11 +290,10 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
           >
             <button
               onClick={handleLogout}
-              className={`${
-                isClicked
+              className={`${isClicked
                   ? "translate-y-0 opacity-100"
                   : "translate-y-15 opacity-0"
-              } transition-all duration-150 bg-red-alert hover:bg-red-indicator w-full justify-center items-center rounded-md`}
+                } transition-all duration-150 bg-red-alert hover:bg-red-indicator w-full justify-center items-center rounded-md`}
             >
               <p className="text-center py-1.5 pt-2 font-extrabold text-sm sm:text-base">
                 Logout
@@ -287,9 +322,8 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
                 alt="Logout Icon"
                 width={20}
                 height={20}
-                className={`${
-                  isClicked ? "rotate-180" : "rotate-0"
-                } transition-all duration-150 cursor-pointer w-4 h-4 sm:w-5 sm:h-5`}
+                className={`${isClicked ? "rotate-180" : "rotate-0"
+                  } transition-all duration-150 cursor-pointer w-4 h-4 sm:w-5 sm:h-5`}
               />
             </div>
           </div>
