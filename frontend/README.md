@@ -83,11 +83,7 @@ src/
 │   │   ├── auth.ts            # Authentication API calls
 │   │   └── notes.ts           # Notes API calls
 │   └── markdown/              # Markdown rendering engine
-│       ├── classes/           # Core markdown classes
-│       ├── io/                # Server-side file I/O
-│       └── types/             # TypeScript types
-├── content/                    # Static markdown content
-│   └── markdown/
+│       └── classes/           # Core markdown classes
 └── public/                     # Static assets
 ```
 
@@ -130,7 +126,7 @@ src/
 ```typescript
 // Advanced rendering capabilities:
 - 180+ programming languages with syntax highlighting
-- LaTeX math: Inline ($E = mc^2$) and block ($$\int$$) expressions
+- LaTeX math: Inline ($E = mc^2$) and block ($\int$) expressions
 - GitHub Flavored Markdown: Tables, task lists, strikethrough
 - Custom dark theme styling
 ```
@@ -183,55 +179,13 @@ colors: {
 ## 📊 Performance Optimizations
 
 ### Bundle Optimization
-- **Server-side content reading:** Zero client bundle impact for markdown files
 - **Tree shaking:** Optimized imports and unused code elimination
 - **Image optimization:** Next.js built-in image optimization
-
-### Caching Strategy
-```typescript
-// Content caching (production):
-- Memory cache with 5-minute TTL
-- Development: No caching for hot reload
-- Fallback content for missing files
-```
 
 ### Build Performance
 - **Turbopack:** Fast development builds
 - **TypeScript:** Strict mode for early error detection
 - **ESLint:** Code quality enforcement
-
-## 🧪 Markdown System Deep Dive
-
-### Content Management (`src/content/markdown/`)
-- **File-based content:** Actual `.md` files instead of JS strings
-- **Server-side reading:** Next.js Server Components
-- **Hot reload support:** Development-friendly editing
-- **Type safety:** Full TypeScript interfaces
-
-### Markdown Dependencies (Stable Versions)
-```json
-{
-  "react-markdown": "^10.1.0",
-  "remark-gfm": "^4.0.1",
-  "remark-math": "^6.0.0",
-  "rehype-katex": "^7.0.1",
-  "react-syntax-highlighter": "^15.6.1",
-  "katex": "^0.16.22"
-}
-```
-
-### LaTeX Math Features
-- **Inline math:** `$E = mc^2$` renders as formatted equations
-- **Display math:** `$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$`
-- **Greek letters:** α, β, γ, Δ, ∑, ∏
-- **Fractions:** `$\frac{a}{b}$`
-- **Matrices:** `$$\begin{pmatrix} a & b \ c & d 
-end{pmatrix}$$`
-
-### Syntax Highlighting
-- **Theme:** Atom One Dark (`oneDark`)
-- **Languages:** JavaScript, TypeScript, Python, CSS, SQL, JSON, Bash, HTML, etc.
-- **Features:** Line numbers, responsive horizontal scroll
 
 ## 🔧 Development Workflow
 
@@ -258,7 +212,7 @@ export default function ComponentName({ ...props }: Props) {
 ### File Naming Conventions
 - **Components:** PascalCase (`MarkdownRenderer.tsx`)
 - **Pages:** lowercase (`page.tsx`)
-- **Utilities:** camelCase (`reader.ts`)
+- **Utilities:** camelCase (`utils.ts`)
 - **Constants:** UPPER_SNAKE_CASE
 
 ## 🚀 Deployment & Production

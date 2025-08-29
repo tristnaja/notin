@@ -1,16 +1,15 @@
 "use client";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
-import { generateNote } from "@/lib/api/notes";
+import { generateNote, Note } from "@/lib/api/notes";
 import { toast } from "sonner";
-import { on } from "events";
 
 const fileTypes: string[] = ["PDF", "DOCS"];
 
 type GenerateNoteModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onNoteGenerated: (note: any) => void;
+  onNoteGenerated: (note: Note) => void;
 };
 
 /**
@@ -74,8 +73,12 @@ function GenerateNoteModal({
       toast.success("Note generated successfully");
       onNoteGenerated(newNote);
       onClose();
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unknown error occurred.");
+      }
     } finally {
       setLoading(false);
     }

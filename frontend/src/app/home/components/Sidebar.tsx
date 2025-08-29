@@ -64,10 +64,22 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
         position: "top-right",
       });
       router.push("/auth/sign-in");
-    } catch (error: any) {
-      toast.error(
-        error.message || "Oops, there was an error processing your request.",
-        {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(
+          error.message || "Oops, there was an error processing your request.",
+          {
+            style: {
+              "--normal-bg":
+                "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+              "--normal-text": "var(--color-white)",
+              "--normal-border": "transparent",
+            } as React.CSSProperties,
+            position: "top-right",
+          }
+        );
+      } else {
+        toast.error("An unknown error occurred.", {
           style: {
             "--normal-bg":
               "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
@@ -75,8 +87,8 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
             "--normal-border": "transparent",
           } as React.CSSProperties,
           position: "top-right",
-        }
-      );
+        });
+      }
     }
   }
 
@@ -85,17 +97,29 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
      * Fetches the current user's information.
      */
     const fetchCurrentUser = async () => {
-      let currentUser = await getCurrentUser();
+      const currentUser = await getCurrentUser();
 
       setUser(currentUser);
     };
 
     try {
       fetchCurrentUser();
-    } catch (error: any) {
-      toast.error(
-        error.message || "Oops, there was an error processing your request.",
-        {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(
+          error.message || "Oops, there was an error processing your request.",
+          {
+            style: {
+              "--normal-bg":
+                "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+              "--normal-text": "var(--color-white)",
+              "--normal-border": "transparent",
+            } as React.CSSProperties,
+            position: "top-right",
+          }
+        );
+      } else {
+        toast.error("An unknown error occurred.", {
           style: {
             "--normal-bg":
               "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
@@ -103,8 +127,8 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
             "--normal-border": "transparent",
           } as React.CSSProperties,
           position: "top-right",
-        }
-      );
+        });
+      }
     }
   }, []);
 

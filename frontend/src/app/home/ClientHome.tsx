@@ -29,8 +29,12 @@ export default function ClientHome() {
         if (userNotes.length > 0) {
           setActiveNote(userNotes[0]);
         }
-      } catch (error: any) {
-        toast.error(error.message || "Failed to fetch notes");
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message || "Failed to fetch notes");
+        } else {
+          toast.error("An unknown error occurred while fetching notes.");
+        }
       } finally {
         setIsLoading(false);
       }

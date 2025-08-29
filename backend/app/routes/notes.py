@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
-from typing import Annotated, Union, Optional, List
+from typing import Annotated, Optional, List
 
 from .. import dependencies, models, schemas, service
 

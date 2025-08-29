@@ -38,10 +38,9 @@ export default function SignInPage() {
         position: "top-right",
       });
       router.push("/home");
-    } catch (error: any) {
-      toast.error(
-        error.message || "Oops, there was an error processing your request.",
-        {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message || "Oops, there was an error processing your request.", {
           style: {
             "--normal-bg":
               "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
@@ -49,8 +48,18 @@ export default function SignInPage() {
             "--normal-border": "transparent",
           } as React.CSSProperties,
           position: "top-right",
-        }
-      );
+        });
+      } else {
+        toast.error("An unknown error occurred.", {
+          style: {
+            "--normal-bg":
+              "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+            "--normal-text": "var(--color-white)",
+            "--normal-border": "transparent",
+          } as React.CSSProperties,
+          position: "top-right",
+        });
+      }
     } finally {
       setLoading(false);
     }
