@@ -22,24 +22,29 @@ This is the backend API server for Notin, built with Python and FastAPI. It prov
 
 ### Installation
 
-1.  **Clone the repository and navigate to the backend directory:**
+1.  **Clone the repository and navigate to the project root:**
 
     ```bash
     git clone https://github.com/your-username/notin.git
-    cd notin/backend
+    cd notin
     ```
 
-2.  **Create a virtual environment:**
-
+2.  **Create and activate the virtual environment (from project root):**
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    python3 -m venv .venv
     ```
+    -   On **macOS/Linux**:
+        ```bash
+        source .venv/bin/activate
+        ```
+    -   On **Windows**:
+        ```bash
+        .venv\Scripts\activate
+        ```
 
-3.  **Install the dependencies:**
-
+3.  **Install the dependencies (from project root):**
     ```bash
-    pip install -r requirements.txt
+    pip install -r backend/requirements.txt
     ```
 
 4.  **Configure environment variables:**

@@ -241,21 +241,6 @@ npm run start    # Starts production server
 npm run lint     # ESLint checks
 ```
 
-## 🔄 Future Enhancements
-
-### Planned Features
-- **Authentication integration** with backend API
-- **Real-time note synchronization**
-- **Advanced note organization** (tags, folders)
-- **Collaborative editing** features
-- **Export functionality** (PDF, Word, HTML)
-
-### Technical Improvements
-- **Testing framework** setup (Jest + Testing Library)
-- **Storybook** for component documentation
-- **Performance monitoring** integration
-- **PWA features** for offline usage
-
 ## 🤝 Contributing to Frontend
 
 ### Development Setup

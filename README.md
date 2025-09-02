@@ -1,263 +1,131 @@
 # Notin - AI-Powered Note Generator
 
-**Notin** is a modern, AI-driven web application designed to streamline your note-taking process with advanced markdown rendering, syntax highlighting, and LaTeX math support. This full-stack application provides a professional note-taking experience for students, developers, and creators.
+<p align="center">
+  <img src="./frontend/public/logo-full.svg" alt="Notin Logo" width="400">
+</p>
+
+<p align="center">
+  <strong>Transform YouTube videos, PDFs, and DOCX files into beautifully structured markdown notes with the power of AI.</strong>
+</p>
+
+---
+
+**Notin** is a full-stack web application designed to streamline your note-taking process. It leverages Google's Gemini AI to generate clear, organized, and easy-to-read notes from various sources, featuring a professional dashboard, a rich markdown experience with syntax highlighting, and full LaTeX math support.
 
 ## ✨ Key Features
 
-- **🎨 Modern Landing Page:** Responsive marketing site with Lottie animations
-- **🔐 Authentication System:** Complete sign-in, sign-up, and password recovery flows
-- **📝 Advanced Markdown Editor:** Professional-grade markdown rendering with 180+ programming languages
-- **🧮 LaTeX Math Support:** Full mathematical notation rendering with KaTeX
-- **📱 Responsive Design:** Mobile-first design that works seamlessly across all devices
-- **🚀 High Performance:** Server-side rendering with optimized bundle sizes
-- **🔄 File-Based Content:** Markdown content management with hot-reload support
+-   **AI-Powered Note Generation**: Automatically create detailed notes from YouTube video transcripts, PDF documents, and DOCX files.
+-   **Complete Authentication**: Secure user registration and login system with both local email/password and Google OAuth 2.0.
+-   **Dynamic Dashboard**: A responsive and intuitive dashboard featuring a collapsible sidebar for efficient note management.
+-   **Advanced Markdown Rendering**: Professional-grade markdown display with support for over 180 programming languages and custom-styled components.
+-   **LaTeX Math Support**: Full support for mathematical and scientific notation using KaTeX.
+-   **Multi-Source Input**: Seamlessly switch between providing a YouTube URL or uploading PDF and DOCX files to generate notes.
 
 ## 🏗️ Project Architecture
 
-This monorepo contains both frontend and backend applications:
+This project is a monorepo containing the Next.js frontend and the FastAPI backend.
 
 ```
 notin/
 ├── frontend/           # Next.js 15.4.3 application
-│   ├── src/app/       # App Router with feature-based structure
-│   ├── src/content/   # Markdown content files
-│   └── public/        # Static assets organized by feature
-├── backend/           # API server (in development)
-└── README.md          # This file
+├── backend/            # FastAPI (Python) API server
+└── README.md           # This file
 ```
 
-### Frontend Architecture
+### Frontend (Next.js)
 
-- **Framework:** Next.js 15.4.3 with App Router
-- **Language:** TypeScript with strict mode
-- **Styling:** Tailwind CSS 4.x
-- **Markdown:** react-markdown with GFM, syntax highlighting, and math support
-- **Animations:** Lottie animations for enhanced UX
+The frontend is built with the Next.js App Router, ensuring a modern, performant, and scalable user interface. It communicates with the backend via a RESTful API.
 
-### Backend Architecture
+### Backend (FastAPI)
 
-- **Status:** Implemented & Functional
-- **Framework:** FastAPI (Python)
-- **Database:** SQLAlchemy ORM for database interactions.
-- **Authentication:** JWT (JSON Web Tokens) for secure sessions.
+The backend is a high-performance API server built with Python and FastAPI. It handles user authentication, database operations, and the core AI note-generation logic by interfacing with the Google Gemini API.
 
 ## 🚀 Tech Stack
 
-### Frontend
+| Category           | Technology                                                                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| **Frontend**       | Next.js 15.4.3, React 19, TypeScript, Tailwind CSS 4.x, `react-markdown`, KaTeX, Sonner (Notifications)        |
+| **Backend**        | FastAPI, Python 3.9, Uvicorn                                                                               |
+| **Database**       | MySQL, SQLAlchemy (ORM)                                                                                    |
+| **Authentication** | JWT (python-jose, passlib), Google OAuth 2.0 (Authlib)                                                       |
+| **AI & Data**      | Google Generative AI (Gemini), `youtube-transcript-api`, `pypdf2`, `python-docx`                           |
+| **Dev Tools**      | Turbopack, ESLint, Prettier, `python-dotenv`                                                               |
 
-- **Next.js 15.4.3** - React framework with App Router
-- **TypeScript** - Type-safe JavaScript
-- **Tailwind CSS 4.x** - Utility-first CSS framework
-- **react-markdown** - Markdown rendering with plugin ecosystem
-- **KaTeX** - LaTeX math rendering
-- **react-syntax-highlighter** - Code syntax highlighting
-- **@lottiefiles/dotlottie-react** - Animation support
-
-### Backend
-
-- **FastAPI** - High-performance Python web framework.
-- **SQLAlchemy** - SQL toolkit and Object-Relational Mapper.
-- **Pydantic** - Data validation and settings management.
-- **python-jose** & **passlib** - For JWT creation/validation and password hashing.
-
-### Development Tools
-
-- **ESLint** - Code linting with Next.js rules
-- **Turbopack** - Fast development builds
-- **PostCSS** - CSS processing
-- **Uvicorn** - ASGI server for running the FastAPI backend.
-
-## 🏁 Quick Start
+## 🏁 Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v20.x or later
-- Python 3.8+ & `pip`
-- npm, yarn, or pnpm package manager
+-   [Node.js](https://nodejs.org/) v20.x or later
+-   Python 3.8+ & `pip`
+-   A running MySQL database instance
+-   Google API Key and OAuth 2.0 Credentials
 
-### Installation
+### Installation & Setup
 
-1. **Clone the repository:**
+1.  **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/your-username/notin.git
-   cd notin
-   ```
+    ```bash
+    git clone https://github.com/tristanaja/notin.git
+    cd notin
+    ```
 
-2. **Setup Frontend:**
+2.  **Create and activate Python virtual environment (from project root):**
+    ```bash
+    python3 -m venv .venv
+    ```
+    -   On **macOS/Linux**:
+        ```bash
+        source .venv/bin/activate
+        ```
+    -   On **Windows**:
+        ```bash
+        .venv\Scripts\activate
+        ```
 
-   ```bash
-   cd frontend
-   npm install
-   ```
+3.  **Install backend dependencies (from project root):**
+    ```bash
+    pip install -r backend/requirements.txt
+    ```
 
-3. **Setup Backend:**
-   ```bash
-   cd ../backend
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   pip install -r requirements.txt
-   ```
+4.  **Configure Backend Environment:**
+    Create a `.env` file in the `/backend` directory and populate it with your credentials. A template is provided in `backend/README.md`.
+
+5.  **Install frontend dependencies:**
+    ```bash
+    cd frontend
+    npm install
+    ```
 
 ### Running the Application
 
-1. **Start the Backend Server:**
-   In the `/backend` directory:
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+1.  **Start the Backend Server:**
+    In the `/backend` directory (with the virtual environment activated):
+    ```bash
+    uvicorn app.main:app --reload
+    ```
+    The API will be available at `http://127.0.0.1:8000`.
 
-2. **Start the Frontend Development Server:**
-   In a separate terminal, from the `/frontend` directory:
-   ```bash
-   npm run dev
-   ```
-
-3. **Open in browser:**
-   Visit [http://localhost:3000](http://localhost:3000)
-
-## 📁 Detailed Project Structure
-
-### Frontend Structure
-
-```
-frontend/
-├── src/app/
-│   ├── components/          # Landing page components
-│   ├── auth/               # Authentication pages
-│   ├── home/               # Dashboard with markdown editor
-│   │   └── components/     # Dashboard-specific components
-│   ├── documentation/      # App documentation
-│   └── styles/            # CSS modules
-├── src/content/markdown/   # Content management system
-│   ├── demo.md            # Comprehensive demo content
-│   ├── short-demo.md      # Quick demo
-│   ├── math-test.md       # Math testing content
-│   └── utils/             # Content reading utilities
-└── public/
-    ├── landing/           # Landing page assets
-    ├── auth/              # Authentication assets
-    └── home/              # Dashboard assets
-```
-
-### Backend Structure
-
-```
-backend/
-├── app/
-│   ├── routes/
-│   │   └── users.py      # User and authentication routes
-│   ├── auth.py           # JWT and password handling
-│   ├── database.py       # Database connection
-│   ├── dependencies.py   # FastAPI dependencies
-│   ├── main.py           # FastAPI app initialization
-│   ├── models.py         # SQLAlchemy ORM models
-│   └── schemas.py        # Pydantic schemas
-├── requirements.txt      # Python dependencies
-└── README.md
-```
-
-## 💻 Development Commands
-
-### Frontend Commands
-
-```bash
-cd frontend/
-npm run dev      # Start development server with Turbopack
-npm run build    # Build for production
-npm run start    # Start production server
-npm run lint     # Run ESLint code quality checks
-```
-
-### Backend Commands
-
-```bash
-# Navigate to the backend directory
-cd backend/
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the development server
-uvicorn app.main:app --reload
-```
-
-## 🎯 Current Implementation Status
-
-### ✅ Completed Features
-
-- **Landing Page System:** Complete responsive marketing site.
-- **Authentication UI:** Sign-in, sign-up, and forgot-password pages.
-- **Backend API:** Functional user registration, login, and session management via JWT.
-- **Advanced Dashboard:** Collapsible sidebar with hover interactions.
-- **Markdown System:** Professional rendering with syntax highlighting.
-- **Math Support:** LaTeX expressions with KaTeX.
-- **File-Based Content:** Server-side markdown file management.
-- **Performance Optimization:** Caching and bundle optimization.
-
-### 🚧 In Development
-
-- **Frontend-Backend Integration:** Connecting the Next.js frontend with the FastAPI backend for authentication.
-- **Note Management:** Implementing CRUD operations for notes on the backend.
-- **AI Integration:** Note generation functionality.
-
-### 📋 Planned Features
-
-- **Real-time Collaboration:** Multi-user note editing
-- **Advanced Organization:** Tags, folders, and search
-- **Export Options:** PDF, Word, HTML export
-- **Template System:** Pre-built note templates
-
-## 🧪 Advanced Features
-
-### Markdown Rendering
-
-- **180+ Languages:** Comprehensive syntax highlighting
-- **GitHub Flavored Markdown:** Tables, task lists, strikethrough
-- **LaTeX Math:** Inline (`$E = mc^2$`) and block math expressions
-- **Custom Styling:** Dark theme with consistent design
-
-### Collapsible Sidebar
-
-- **Responsive Design:** Viewport-based width units
-- **Smooth Animations:** CSS transitions with hover effects
-- **State Management:** React hooks for collapse/expand
-
-### Content Management
-
-- **Server-Side Reading:** Zero client bundle impact
-- **Caching System:** Memory cache with configurable TTL
-- **Hot Reload:** Development-friendly content updates
-- **Error Handling:** Graceful fallbacks for missing files
+2.  **Start the Frontend Server:**
+    In a separate terminal, from the `/frontend` directory:
+    ```bash
+    npm run dev
+    ```
+    The application will be available at `http://localhost:3000`.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please follow our development guidelines:
+Contributions are welcome! Please adhere to the existing code style and conventions. For major changes, please open an issue first to discuss what you would like to change.
 
 ### Commit Message Convention
 
-- `feat:` - New feature for users
-- `fix:` - Bug fixes
-- `docs:` - Documentation changes
-- `style:` - Code formatting changes
-- `test:` - Adding or updating tests
-- `refactor:` - Code refactoring
-- `chore:` - Maintenance tasks
-
-### Development Guidelines
-
-- Use TypeScript strict mode
-- Follow ESLint rules
-- Write meaningful commit messages
-- Test changes thoroughly
-- Update documentation as needed
+-   `feat:` A new feature
+-   `fix:` A bug fix
+-   `docs:` Documentation only changes
+-   `style:` Changes that do not affect the meaning of the code
+-   `refactor:` A code change that neither fixes a bug nor adds a feature
+-   `test:` Adding missing tests or correcting existing tests
+-   `chore:` Changes to the build process or auxiliary tools
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` file for more information.
-
-## 🔗 Links
-
-- **Repository:** [GitHub](https://github.com/tristanaja/notin)
-- **Documentation:** [Frontend README](./frontend/README.md)
-- **Backend API:** [Backend README](./backend/README.md)
+Distributed under the MIT License. See the `LICENSE` file for more information.
