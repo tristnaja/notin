@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { loginUser } from "../../../lib/api/auth";
-import { useRouter } from "next/dist/client/components/navigation";
+
 import { toast } from "sonner";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 import Cookies from "js-cookie";
@@ -13,7 +13,7 @@ import Cookies from "js-cookie";
  * A page for users to sign in to their accounts.
  */
 export default function SignInPage() {
-  const router = useRouter();
+  
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
