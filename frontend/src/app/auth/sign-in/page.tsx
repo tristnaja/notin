@@ -7,6 +7,7 @@ import { loginUser } from "../../../lib/api/auth";
 import { useRouter } from "next/dist/client/components/navigation";
 import { toast } from "sonner";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
+import Cookies from "js-cookie";
 
 /**
  * A page for users to sign in to their accounts.
@@ -28,18 +29,25 @@ export default function SignInPage() {
 
     setLoading(true);
     try {
-      await loginUser(email, password);
-      toast.success("Login successful!", {
-        style: {
-          "--normal-bg":
-            "light-dark(var(--color-green-600), var(--color-green-400))",
-          "--normal-text": "var(--color-white)",
-          "--normal-border":
-            "light-dark(var(--color-green-600), var(--color-green-400))",
-        } as React.CSSProperties,
-        position: "top-right",
-      });
-      window.location.href = "/home";
+      const data = await loginUser(email, password);
+      if (data.access_token) {
+        Cookies.set("access_token", data.access_token, {
+          expires: 1,
+          secure: true,
+          sameSite: "strict",
+        });
+        toast.success("Login successful!", {
+          style: {
+            "--normal-bg":
+              "light-dark(var(--color-green-600), var(--color-green-400))",
+            "--normal-text": "var(--color-white)",
+            "--normal-border":
+              "light-dark(var(--color-green-600), var(--color-green-400))",
+          } as React.CSSProperties,
+          position: "top-right",
+        });
+        window.location.href = "/home";
+      }
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(

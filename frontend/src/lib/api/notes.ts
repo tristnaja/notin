@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 export interface Note {
     id: number;
     title: string;
@@ -33,8 +35,13 @@ export async function generateNote(formData: FormData) {
  * @returns A list of notes.
  */
 export async function fetchAllNotes(): Promise<Note[]> {
+    const token = Cookies.get("access_token");
     const response = await fetch(`${API_URL}/notes/collect`, {
         method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
         credentials: "include"
     });
     if (!response.ok) {

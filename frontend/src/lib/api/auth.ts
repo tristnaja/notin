@@ -6,6 +6,7 @@
  * @param username The user's username.
  * @returns The new user's data.
  */
+import Cookies from "js-cookie";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -58,8 +59,13 @@ export async function loginUser(email: string, password: string) {
  * @returns The current user's data.
  */
 export async function getCurrentUser() {
+  const token = Cookies.get("access_token");
   const response = await fetch(`${API_URL}/auth/me`, {
     method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
     credentials: "include"
   });
 
