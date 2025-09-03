@@ -57,6 +57,6 @@ async def google_auth_callback(request: Request, db: Session = Depends(get_db)):
         value=access_token,
         httponly=True,
         secure=True,  # Change to True in production
-        samesite="none"
+        samesite="None"
     )
     return response

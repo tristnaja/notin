@@ -48,7 +48,7 @@ def login(user: schemas.UserLogin, db: Session = Depends(dependencies.get_db)):
         value=token, 
         httponly=True, 
         secure=True,  #change to true when in production
-        samesite="none"
+        samesite="None"
         )
     return response
 
