@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
+export const dynamic = "force-dynamic";
+
 export default function AuthCallback() {
   const searchParams = useSearchParams();
   const router = useRouter();
