@@ -16,6 +16,7 @@ export default function SignInPage() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   /**
    * Handles the form submission for user registration.
@@ -43,15 +44,18 @@ export default function SignInPage() {
       router.push("/auth/sign-in");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        toast.error(error.message || "Oops, there was an error processing your request.", {
-          style: {
-            "--normal-bg":
-              "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
-            "--normal-text": "var(--color-white)",
-            "--normal-border": "transparent",
-          } as React.CSSProperties,
-          position: "top-right",
-        });
+        toast.error(
+          error.message || "Oops, there was an error processing your request.",
+          {
+            style: {
+              "--normal-bg":
+                "light-dark(var(--destructive), color-mix(in oklab, var(--destructive) 60%, var(--background)))",
+              "--normal-text": "var(--color-white)",
+              "--normal-border": "transparent",
+            } as React.CSSProperties,
+            position: "top-right",
+          }
+        );
       } else {
         toast.error("An unknown error occurred.", {
           style: {
@@ -176,7 +180,7 @@ export default function SignInPage() {
               <div className="h-1 bg-white-opacity-50 flex-1" />
             </div>
             <Link
-              href="http://localhost:8000/auth/google/login"
+              href={`${API_URL}/auth/google/login`}
               className="text-white flex bg-light-grey w-[55dvw] max-w-[412px] h-[52px] items-center justify-center gap-2 md:gap-3 rounded-lg font-bold"
               style={{ fontSize: "clamp(12px, 2.5vw, 20px)" }}
             >

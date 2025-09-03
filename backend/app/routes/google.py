@@ -10,7 +10,13 @@ from ..google_auth import oauth
 
 load_dotenv()
 
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+origins = [
+    "http://localhost:3000"
+]
+
+FRONTEND_URL = os.getenv("FRONTEND_URL")
+if FRONTEND_URL and FRONTEND_URL not in origins:
+    origins.append(FRONTEND_URL)
 
 router = APIRouter(prefix="/auth/google", tags=["Google Auth"])
 
