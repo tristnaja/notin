@@ -152,7 +152,7 @@ export default function SignInPage() {
               <div className="h-1 bg-white-opacity-50 flex-1" />
             </div>
             <a
-              href={`https://${API_URL}/auth/google/login`}
+              href={`${API_URL}/auth/google/login`}
               className="text-white flex bg-light-grey w-[55dvw] max-w-[412px] h-[52px] items-center justify-center gap-2 md:gap-3 rounded-lg font-bold"
               style={{ fontSize: "clamp(12px, 2.5vw, 20px)" }}
             >
