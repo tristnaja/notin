@@ -12,8 +12,11 @@ export interface Note {
  * @param formData The form data containing the source type, source, and URL.
  * @returns The newly generated note.
  */
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export async function generateNote(formData: FormData) {
-    const response = await fetch("http://localhost:8000/notes/generate", {
+    const response = await fetch(`${API_URL}/notes/generate`, {
         method: "POST",
         body: formData,
         credentials: "include"
@@ -30,7 +33,7 @@ export async function generateNote(formData: FormData) {
  * @returns A list of notes.
  */
 export async function fetchAllNotes(): Promise<Note[]> {
-    const response = await fetch("http://localhost:8000/notes/collect", {
+    const response = await fetch(`${API_URL}/notes/collect`, {
         method: "GET",
         credentials: "include"
     });

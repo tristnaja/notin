@@ -6,8 +6,11 @@
  * @param username The user's username.
  * @returns The new user's data.
  */
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export async function registerUser(email: string, password: string, confirmPassword: string, username: string) {
-    const response = await fetch('http://localhost:8000/auth/register', {
+    const response = await fetch(`${API_URL}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +35,7 @@ export async function registerUser(email: string, password: string, confirmPassw
  * @returns The user's data.
  */
 export async function loginUser(email: string, password: string) {
-  const response = await fetch('http://localhost:8000/auth/login', {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -55,7 +58,7 @@ export async function loginUser(email: string, password: string) {
  * @returns The current user's data.
  */
 export async function getCurrentUser() {
-  const response = await fetch("http://localhost:8000/auth/me", {
+  const response = await fetch(`${API_URL}/auth/me`, {
     method: "GET",
     credentials: "include"
   });
@@ -73,7 +76,7 @@ export async function getCurrentUser() {
  * Logs out the current user.
  */
 export async function logoutUser() {
-  await fetch("http://localhost:8000/auth/logout", {
+  await fetch(`${API_URL}/auth/logout`, {
     method: "POST",
     credentials: "include", // delete cookie from server
   });

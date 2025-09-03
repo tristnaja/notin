@@ -1,11 +1,16 @@
+import os
+from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from starlette.requests import Request
 from fastapi.responses import RedirectResponse, JSONResponse
-
 from .. import models, auth
 from ..dependencies import get_db
 from ..google_auth import oauth
+
+load_dotenv()
+
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
 router = APIRouter(prefix="/auth/google", tags=["Google Auth"])
 
@@ -40,12 +45,12 @@ async def google_auth_callback(request: Request, db: Session = Depends(get_db)):
     
     access_token = auth.create_access_token(data={"sub": db_user.email})
 
-    response = RedirectResponse(url="http://localhost:3000/home")
+    response = RedirectResponse(url=f"{FRONTEND_URL}/home")
     response.set_cookie(
         key="access_token", 
         value=access_token,
         httponly=True,
-        secure=False,  # Change to True in production
+        secure=True,  # Change to True in production
         samesite="lax"
     )
     return response
