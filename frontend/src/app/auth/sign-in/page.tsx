@@ -39,7 +39,7 @@ export default function SignInPage() {
         } as React.CSSProperties,
         position: "top-right",
       });
-      router.push("/home");
+      window.location.href = "/home";
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(
