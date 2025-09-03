@@ -21,5 +21,9 @@ export default function AuthCallback() {
     }
   }, [searchParams, router]);
 
-  return <div>Loading...</div>; // Or a spinner component
+  return (
+    <>
+      <p>Authenticating...</p>
+    </>
+  ); // Or a spinner component
 }
