@@ -51,12 +51,5 @@ async def google_auth_callback(request: Request, db: Session = Depends(get_db)):
     
     access_token = auth.create_access_token(data={"sub": db_user.email})
 
-    response = RedirectResponse(url=f"{FRONTEND_URL}/home")
-    response.set_cookie(
-        key="access_token", 
-        value=access_token,
-        httponly=True,
-        secure=True,  # Change to True in production
-        samesite="None"
-    )
+    response = RedirectResponse(url=f"{FRONTEND_URL}/auth/callback?token={access_token}")
     return response

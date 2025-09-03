@@ -42,14 +42,7 @@ def login(user: schemas.UserLogin, db: Session = Depends(dependencies.get_db)):
     if not db_user or not auth.verify_password(user.password, db_user.hashed_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Credentials.")
     token = auth.create_access_token(data={"sub": db_user.email})
-    response = JSONResponse(content={"message": "Login successful"})
-    response.set_cookie(
-        key="access_token", 
-        value=token, 
-        httponly=True, 
-        secure=True,  #change to true when in production
-        samesite="None"
-        )
+    response = JSONResponse(content={"message": "Login successful", "access_token": token, "token_type": "bearer"})
     return response
 
 @router.post("/logout")
