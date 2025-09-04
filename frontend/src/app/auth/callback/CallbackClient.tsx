@@ -1,18 +1,23 @@
-'use client';
-import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Cookies from 'js-cookie';
+"use client";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function CallbackClient() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
-    const token = searchParams.get('token');
+    const token = searchParams.get("token");
     if (token) {
       // Store the token in a cookie on the frontend domain
-      Cookies.set('access_token', token, { expires: 1, secure: true, sameSite: 'strict' });
+      Cookies.set("access_token", token, {
+        expires: 1,
+        secure: true,
+        sameSite: "strict",
+      });
       // Redirect to the home page
-      window.location.href = '/home';
+      router.replace("/home");
     }
   }, [searchParams]);
 

@@ -7,6 +7,7 @@ import { getCurrentUser, logoutUser } from "@/lib/api/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/dist/client/components/navigation";
 import { Note } from "@/lib/api/notes";
+import Cookies from "js-cookie";
 
 type SidebarProps = {
   notes: Note[];
@@ -53,6 +54,8 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
   async function handleLogout() {
     try {
       await logoutUser();
+      Cookies.remove("access_token");
+      setUser(null);
       toast.success("Logout successful!", {
         style: {
           "--normal-bg":
@@ -63,7 +66,7 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
         } as React.CSSProperties,
         position: "top-right",
       });
-      router.push("/auth/sign-in");
+      router.replace("/auth/sign-in");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error(
@@ -314,10 +317,11 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
           >
             <button
               onClick={handleLogout}
-              className={`${isClicked
+              className={`${
+                isClicked
                   ? "translate-y-0 opacity-100"
                   : "translate-y-15 opacity-0"
-                } transition-all duration-150 bg-red-alert hover:bg-red-indicator w-full justify-center items-center rounded-md`}
+              } transition-all duration-150 bg-red-alert hover:bg-red-indicator w-full justify-center items-center rounded-md`}
             >
               <p className="text-center py-1.5 pt-2 font-extrabold text-sm sm:text-base">
                 Logout
@@ -346,8 +350,9 @@ function Sidebar({ notes, activeNote, onSelectNote, onNewNote }: SidebarProps) {
                 alt="Logout Icon"
                 width={20}
                 height={20}
-                className={`${isClicked ? "rotate-180" : "rotate-0"
-                  } transition-all duration-150 cursor-pointer w-4 h-4 sm:w-5 sm:h-5`}
+                className={`${
+                  isClicked ? "rotate-180" : "rotate-0"
+                } transition-all duration-150 cursor-pointer w-4 h-4 sm:w-5 sm:h-5`}
               />
             </div>
           </div>

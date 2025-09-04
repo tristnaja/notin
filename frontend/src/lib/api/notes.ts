@@ -18,8 +18,12 @@ export interface Note {
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function generateNote(formData: FormData) {
+    const token = Cookies.get("access_token");
     const response = await fetch(`${API_URL}/notes/generate`, {
         method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
         body: formData,
         credentials: "include"
     });
