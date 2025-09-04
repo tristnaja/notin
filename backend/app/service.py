@@ -35,10 +35,11 @@ def get_text_from_pdf(file: io.BytesIO) -> str:
         text += page.extract_text()
     return text
 
-def get_text_from_docx(file) -> str:
+def get_text_from_docx(file: io.BytesIO) -> str:
     """Extracts text from a DOCX file."""
-    doc = docx.Document(file)
-    text = "/n".join([para.text for para in doc.paragraphs])
+    file_stream = io.BytesIO(file.read())
+    doc = docx.Document(file_stream)
+    text = "\n".join([para.text for para in doc.paragraphs])
     return text
 
 def generate_notes_from_text(text: str) -> str:
