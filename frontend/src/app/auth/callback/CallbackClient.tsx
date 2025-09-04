@@ -11,9 +11,10 @@ export default function CallbackClient() {
     const token = searchParams.get("token");
     if (token) {
       // Store the token in a cookie on the frontend domain
+      const isSecure = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
       Cookies.set("access_token", token, {
         expires: 1,
-        secure: true,
+        secure: isSecure,
         sameSite: "strict",
       });
       // Redirect to the home page

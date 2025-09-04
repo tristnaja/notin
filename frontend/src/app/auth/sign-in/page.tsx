@@ -13,7 +13,6 @@ import Cookies from "js-cookie";
  * A page for users to sign in to their accounts.
  */
 export default function SignInPage() {
-  
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -29,11 +28,12 @@ export default function SignInPage() {
 
     setLoading(true);
     try {
+      const isSecure = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
       const data = await loginUser(email, password);
       if (data.access_token) {
         Cookies.set("access_token", data.access_token, {
           expires: 1,
-          secure: true,
+          secure: isSecure,
           sameSite: "strict",
         });
         toast.success("Login successful!", {
