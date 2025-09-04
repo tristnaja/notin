@@ -4,7 +4,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { generateNote, Note } from "@/lib/api/notes";
 import { toast } from "sonner";
 
-const fileTypes: string[] = ["PDF", "DOCS"];
+const fileTypes: string[] = ["PDF", "DOCX"];
 
 type GenerateNoteModalProps = {
   isOpen: boolean;
@@ -168,6 +168,9 @@ function GenerateNoteModal({
               className="bg-[#141414] backdrop-blur-sm p-8 rounded-b-xl flex flex-col justify-center items-center gap-4"
             >
               <article className="flex flex-col gap-1">
+                <p className="text-center w-full mb-4 font-extrabold">
+                  ⚠️ THIS FEATURE IS UNDERGOING A FIX ⚠️
+                </p>
                 <label htmlFor="ytlink" className="font-bold text-[16px]">
                   YouTube Link
                 </label>
